@@ -5,32 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>הקישורים של ModerniMan</title>
     
-    <!-- Google Fonts for a clean, modern look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <style>
-        /* --- General Styling & Reset --- */
         :root {
             --primary-color: #0A66C2; /* LinkedIn Blue */
             --instagram-color: #E4405F;
+            --contact-color: #25D366; /* WhatsApp Green */
             --background-color: #f0f2f5;
             --card-background: #ffffff;
             --text-color: #1c1e21;
             --subtle-text-color: #606770;
-            --border-color: #dddfe2;
             --shadow-color: rgba(0, 0, 0, 0.1);
+            --error-color: #e74c3c;
+            --success-color: #2ecc71;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Assistant', sans-serif;
@@ -43,16 +38,17 @@
             padding: 20px;
         }
 
-        /* --- Main Container Card --- */
         .container {
             background-color: var(--card-background);
-            border-radius: 16px;
-            box-shadow: 0 4px 20px var(--shadow-color);
+            border-radius: 24px;
+            box-shadow: 0 8px 32px var(--shadow-color);
             padding: 40px;
+            padding-top: 80px;
             width: 100%;
             max-width: 400px;
             text-align: center;
             animation: fadeIn 0.8s ease-out;
+            position: relative;
         }
 
         @keyframes fadeIn {
@@ -60,125 +56,206 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- Profile Picture --- */
         .profile-pic {
-            width: 120px;
-            height: 120px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--card-background);
-            box-shadow: 0 2px 10px var(--shadow-color);
-            margin: -100px auto 20px; /* Pulls the image up */
-            transition: transform 0.3s ease;
+            border: 5px solid var(--card-background);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            position: absolute;
+            top: -55px;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
-        .profile-pic:hover {
-            transform: scale(1.05);
-        }
-
-        /* --- Typography --- */
         h1 {
             font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        p {
-            font-size: 1rem;
-            color: var(--subtle-text-color);
             margin-bottom: 30px;
-            font-weight: 400;
         }
 
-        /* --- Links List --- */
-        ul {
-            list-style-type: none;
-            padding: 0;
-            width: 100%;
-        }
+        ul { list-style-type: none; padding: 0; width: 100%; }
+        li { margin-bottom: 15px; }
 
-        li {
-            margin-bottom: 15px;
-        }
-
-        li a {
+        .link-button {
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 15px 20px;
+            justify-content: space-between;
+            padding: 14px 20px;
             border-radius: 12px;
             text-decoration: none;
             font-size: 1.1rem;
             font-weight: 600;
             transition: all 0.3s ease;
-            border: 2px solid transparent;
+            color: white;
+            width: 100%;
+            border: none; /* For button reset */
+            font-family: 'Assistant', sans-serif; /* For button font */
+            cursor: pointer;
         }
-
-        li a i {
+        .link-button:hover {
+            transform: translateY(-3px);
+        }
+        .link-button span {
+            flex-grow: 1;
+            text-align: center;
+        }
+        .link-button i {
             font-size: 1.4rem;
-            margin-left: 12px; /* For RTL */
         }
 
-        /* --- Specific Link Styles --- */
-        .link-linkedin {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        .link-linkedin:hover {
-            background-color: #08549e;
-            transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(10, 102, 194, 0.3);
-        }
+        .link-linkedin { background-color: var(--primary-color); }
+        .link-linkedin:hover { box-shadow: 0 6px 20px rgba(10, 102, 194, 0.3); }
 
-        .link-instagram {
-            background-color: var(--instagram-color);
-            color: white;
-        }
-        .link-instagram:hover {
-            background-color: #c13584;
-            transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(228, 64, 95, 0.3);
-        }
+        .link-instagram { background-color: var(--instagram-color); }
+        .link-instagram:hover { box-shadow: 0 6px 20px rgba(228, 64, 95, 0.3); }
         
-        /* --- Responsive Design for smaller screens --- */
+        .link-contact { background-color: var(--contact-color); }
+        .link-contact:hover { box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3); }
+
+        /* --- Modal Styles --- */
+        .modal {
+            display: none; position: fixed; z-index: 1000;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            align-items: center; justify-content: center;
+        }
+        .modal-content {
+            background-color: #fff; margin: auto; padding: 30px;
+            border-radius: 16px; width: 90%; max-width: 450px;
+            position: relative; animation: slideIn 0.5s ease-out;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .close-btn {
+            color: #aaa; position: absolute; left: 20px; top: 15px;
+            font-size: 28px; font-weight: bold; cursor: pointer;
+        }
+        .modal h2 { margin-bottom: 20px; }
+        .modal-form input, .modal-form textarea {
+            width: 100%; padding: 12px; margin-bottom: 15px;
+            border: 1px solid #ccc; border-radius: 8px;
+            font-family: 'Assistant', sans-serif; font-size: 1rem;
+        }
+        .modal-form button {
+            width: 100%; padding: 15px; border: none; border-radius: 8px;
+            background-color: var(--contact-color); color: white;
+            font-size: 1.1rem; font-weight: 600; cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .modal-form button:hover { background-color: #1ebe57; }
+        #form-status { margin-top: 15px; font-weight: 600; }
+        .success { color: var(--success-color); }
+        .error { color: var(--error-color); }
+
         @media (max-width: 480px) {
-            .container {
-                padding: 30px 25px;
-            }
-            .profile-pic {
-                width: 100px;
-                height: 100px;
-                margin-top: -85px;
-            }
-            h1 {
-                font-size: 1.8rem;
-            }
+            .container { padding: 25px; padding-top: 70px; }
+            .profile-pic { width: 90px; height: 90px; top: -45px; }
+            h1 { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Replace placeholder with your actual image URL -->
         <img src="https://placehold.co/150x150/7F56D9/FFFFFF?text=MM" alt="תמונת פרופיל" class="profile-pic">
         
         <h1>Lipaz Nussen</h1>
-        <p>מומחה לשיווק דיגיטלי ופיתוח עסקי</p>
-        
+
         <ul>
             <li>
-                <a href="https://il.linkedin.com/in/lipaznussen" target="_blank" class="link-linkedin">
-                    <i class="fab fa-linkedin"></i>
+                <a href="https://il.linkedin.com/in/lipaznussen" target="_blank" class="link-button link-linkedin">
                     <span>LinkedIn</span>
+                    <i class="fab fa-linkedin"></i>
                 </a>
             </li>
             <li>
-                <!-- Make sure to replace this with your actual Instagram profile link -->
-                <a href="https://www.instagram.com/" target="_blank" class="link-instagram">
-                    <i class="fab fa-instagram"></i>
+                <a href="https://www.instagram.com/" target="_blank" class="link-button link-instagram">
                     <span>Instagram</span>
+                    <i class="fab fa-instagram"></i>
                 </a>
+            </li>
+            <li>
+                <button id="contactBtn" class="link-button link-contact">
+                    <span>יצירת קשר</span>
+                    <i class="fas fa-paper-plane"></i>
+                </button>
             </li>
         </ul>
     </div>
+
+    <!-- The Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>השארת פנייה</h2>
+            <form id="contact-form" class="modal-form">
+                <input type="text" name="contact" placeholder="מייל או טלפון לחזרה" required>
+                <textarea name="message" rows="4" placeholder="איך אפשר לעזור?" required></textarea>
+                <button type="submit">שליחה</button>
+                <p id="form-status"></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Modal handling
+        const modal = document.getElementById('contactModal');
+        const btn = document.getElementById('contactBtn');
+        const span = document.getElementsByClassName('close-btn')[0];
+
+        btn.onclick = function() { modal.style.display = 'flex'; }
+        span.onclick = function() { modal.style.display = 'none'; }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Form submission handling
+        const form = document.getElementById('contact-form');
+        const status = document.getElementById('form-status');
+
+        async function handleSubmit(event) {
+            event.preventDefault();
+            const data = new FormData(event.target);
+            
+            const formspreeEndpoint = 'https://formspree.io/f/xqadkyod';
+
+            fetch(formspreeEndpoint, {
+                method: 'POST',
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    status.innerHTML = "תודה! הפנייה נשלחה בהצלחה.";
+                    status.className = 'success';
+                    form.reset();
+                    setTimeout(() => {
+                        modal.style.display = 'none';
+                        status.innerHTML = '';
+                    }, 3000);
+                } else {
+                    response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
+                        } else {
+                            status.innerHTML = "אופס! משהו השתבש. נסו שוב.";
+                        }
+                        status.className = 'error';
+                    })
+                }
+            }).catch(error => {
+                status.innerHTML = "אופס! משהו השתבש. נסו שוב.";
+                status.className = 'error';
+            });
+        }
+        form.addEventListener("submit", handleSubmit);
+    });
+    </script>
+
 </body>
 </html>
