@@ -1,26 +1,179 @@
 <!DOCTYPE html>
-<html lang="he">
+<html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>הקישורים של ModerniMan</title>
+    
+    <!-- Google Fonts for a clean, modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* --- General Styling & Reset --- */
+        :root {
+            --primary-color: #0A66C2; /* LinkedIn Blue */
+            --instagram-color: #E4405F;
+            --background-color: #f0f2f5;
+            --card-background: #ffffff;
+            --text-color: #1c1e21;
+            --subtle-text-color: #606770;
+            --border-color: #dddfe2;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Assistant', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* --- Main Container Card --- */
+        .container {
+            background-color: var(--card-background);
+            border-radius: 16px;
+            box-shadow: 0 4px 20px var(--shadow-color);
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Profile Picture --- */
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--card-background);
+            box-shadow: 0 2px 10px var(--shadow-color);
+            margin: -100px auto 20px; /* Pulls the image up */
+            transition: transform 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.05);
+        }
+
+        /* --- Typography --- */
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        p {
+            font-size: 1rem;
+            color: var(--subtle-text-color);
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        /* --- Links List --- */
+        ul {
+            list-style-type: none;
+            padding: 0;
+            width: 100%;
+        }
+
+        li {
+            margin-bottom: 15px;
+        }
+
+        li a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        li a i {
+            font-size: 1.4rem;
+            margin-left: 12px; /* For RTL */
+        }
+
+        /* --- Specific Link Styles --- */
+        .link-linkedin {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        .link-linkedin:hover {
+            background-color: #08549e;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(10, 102, 194, 0.3);
+        }
+
+        .link-instagram {
+            background-color: var(--instagram-color);
+            color: white;
+        }
+        .link-instagram:hover {
+            background-color: #c13584;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(228, 64, 95, 0.3);
+        }
+        
+        /* --- Responsive Design for smaller screens --- */
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 25px;
+            }
+            .profile-pic {
+                width: 100px;
+                height: 100px;
+                margin-top: -85px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <img src="https://via.placeholder.com/150" alt="תמונת פרופיל" class="profile-pic">
-        <h1>שלום! אני moderniman</h1>
-        <p>מצאו אותי ברחבי הרשת:</p>
+        <!-- Replace placeholder with your actual image URL -->
+        <img src="https://placehold.co/150x150/7F56D9/FFFFFF?text=MM" alt="תמונת פרופיל" class="profile-pic">
+        
+        <h1>Lipaz Nussen</h1>
+        <p>מומחה לשיווק דיגיטלי ופיתוח עסקי</p>
+        
         <ul>
             <li>
-                <a href="https://il.linkedin.com/in/lipaznussen" target="_blank">
+                <a href="https://il.linkedin.com/in/lipaznussen" target="_blank" class="link-linkedin">
                     <i class="fab fa-linkedin"></i>
                     <span>LinkedIn</span>
                 </a>
             </li>
             <li>
-                <a href="https://your-instagram-profile.com" target="_blank">
+                <!-- Make sure to replace this with your actual Instagram profile link -->
+                <a href="https://www.instagram.com/" target="_blank" class="link-instagram">
                     <i class="fab fa-instagram"></i>
                     <span>Instagram</span>
                 </a>
