@@ -9,7 +9,7 @@
     <meta name="description" content="כרטיס הביקור הדיגיטלי של ליפז נוסן. יזם ואיש דיגיטל המתמחה בפתרונות טכנולוגיים ושירות לקוחות.">
     <meta property="og:title" content="ליפז נוסן - ModerniMan">
     <meta property="og:description" content="כרטיס הביקור הדיגיטלי של ליפז נוסן.">
-    <meta property="og:image" content="https://avatars.githubusercontent.com/u/174987178?v=4"> <meta property="og:type" content="website">
+    <meta property="og:image" content=""> <meta property="og:type" content="website">
     <meta property="og:url" content="https://moderniman.co.il">
 
 
@@ -74,6 +74,7 @@
             border: 4px solid var(--card-background);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
             object-fit: cover;
+            background-color: #eee; /* Placeholder color */
         }
 
         h1 {
@@ -81,8 +82,7 @@
             font-weight: 700;
             margin-bottom: 8px;
         }
-
-        /* --- עיצוב חדש לתגית --- */
+        
         .tagline {
             font-size: 1.1rem;
             font-weight: 400;
@@ -106,11 +106,11 @@
             background-color: #f0f2f5;
             border-radius: 12px;
             text-decoration: none;
-            transition: all 0.3s ease; /* --- הוספת אנימציה --- */
+            transition: all 0.3s ease;
         }
 
         .link-button:hover {
-            transform: translateY(-5px); /* --- הוספת אנימציה --- */
+            transform: translateY(-5px);
             box-shadow: 0 6px 20px rgba(0,0,0,0.1);
         }
 
@@ -130,7 +130,6 @@
         .link-button.whatsapp { background-color: #e9f8ee; }
         .link-button.whatsapp i { color: #25D366; }
         
-        /* --- עיצוב חדש לכפתור קריאה לפעולה --- */
         .cta-button {
             display: inline-block;
             background-color: var(--primary-color);
@@ -154,8 +153,7 @@
 <body>
     <div class="container">
         <div class="profile-pic-container">
-            <img src="https://avatars.githubusercontent.com/u/174987178?v=4" alt="תמונת פרופיל של ליפז נוסן"
-                class="profile-pic">
+            <img src="" alt="תמונת פרופיל של ליפז נוסן" id="profile-pic" class="profile-pic">
         </div>
         <h1>ליפז נוסן</h1>
 
@@ -179,6 +177,32 @@
         <a href="index1.html" class="cta-button">צפה בקורות החיים המלאים</a>
 
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+            const username = 'ModerniMan';
+            const profilePicElement = document.getElementById('profile-pic');
+            const ogImageMeta = document.querySelector('meta[property="og:image"]');
+
+            try {
+                const response = await fetch(`https://api.github.com/users/${username}`);
+                if (!response.ok) throw new Error('Failed to fetch GitHub profile');
+                const data = await response.json();
+
+                if (data.avatar_url) {
+                    profilePicElement.src = data.avatar_url;
+                    // עדכון התמונה לתצוגה מקדימה בשיתוף
+                    if(ogImageMeta) {
+                        ogImageMeta.content = data.avatar_url;
+                    }
+                }
+            } catch (error) {
+                console.error("Could not fetch GitHub profile picture:", error);
+                // במקרה של שגיאה, אפשר להציג תמונת ברירת מחדל
+                profilePicElement.src = 'https://via.placeholder.com/150';
+            }
+        });
+    </script>
 </body>
 
 </html>
