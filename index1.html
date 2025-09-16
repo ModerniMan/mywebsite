@@ -69,6 +69,7 @@
         header .contact-info {
             margin-top: 10px;
             font-size: 1em;
+            word-wrap: break-word; /* מבטיח שפרטי הקשר לא יגלשו */
         }
         
         header .contact-info a {
@@ -91,7 +92,7 @@
 
         .job, .education-item, .project, .certification-item {
             margin-bottom: 20px;
-            page-break-inside: avoid; /* מונע שבירת עמוד באמצע סעיף */
+            page-break-inside: avoid;
         }
 
         .job-title, .degree, .project-title, .certification-title {
@@ -123,6 +124,31 @@
             list-style: none;
             padding: 0;
         }
+        
+        /* ================================================= */
+        /* ===          הגדרות עיצוב למובייל             === */
+        /* ================================================= */
+        @media (max-width: 600px) {
+            .resume-container {
+                margin: 0;
+                padding: 20px;
+                border-radius: 0;
+            }
+            .export-button {
+                position: static; /* משנה את המיקום לרגיל */
+                display: block;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            header h1 {
+                font-size: 2em;
+            }
+            .dates {
+                float: none;
+                display: block;
+                margin-bottom: 5px;
+            }
+        }
 
         /* ================================================= */
         /* ===          הגדרות עיצוב להדפסה בלבד         === */
@@ -130,7 +156,7 @@
         @media print {
             body {
                 background-color: #fff;
-                font-size: 10pt; /* הקטנת גודל גופן בסיסי להדפסה */
+                font-size: 10pt;
             }
             .resume-container {
                 box-shadow: none;
@@ -140,7 +166,7 @@
                 border-radius: 0;
             }
             .export-button {
-                display: none; /* הסתרת כפתור הייצוא בהדפסה */
+                display: none;
             }
             header {
                 padding-bottom: 10px;
@@ -158,7 +184,7 @@
                 margin-top: 15px;
             }
             .section {
-                margin-bottom: 10px; /* הקטנת רווחים בין סעיפים */
+                margin-bottom: 10px;
             }
             .job, .education-item, .project, .certification-item {
                 margin-bottom: 10px;
