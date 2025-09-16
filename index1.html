@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>קורות חיים | ליפז נוסן</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --text-color: #34495e;
+            --bg-color: #ecf0f1;
+            --container-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .resume-container {
+            max-width: 800px;
+            width: 100%;
+            margin: 20px;
+            padding: 40px;
+            background: var(--container-bg);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 2.5em;
+        }
+
+        header .contact-info {
+            margin-top: 10px;
+            font-size: 1em;
+        }
+        
+        header .contact-info a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--bg-color);
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .job, .education-item, .project {
+            margin-bottom: 20px;
+        }
+
+        .job-title, .degree, .project-title {
+            font-weight: bold;
+            font-size: 1.1em;
+            color: var(--secondary-color);
+        }
+
+        .company, .institution {
+            font-style: italic;
+        }
+
+        .dates {
+            float: left;
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+
+        ul {
+            padding-right: 20px;
+            margin-top: 5px;
+        }
+        
+        li {
+            margin-bottom: 5px;
+        }
+
+        .languages-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        @media print {
+            body {
+                background-color: #fff;
+            }
+            .resume-container {
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="resume-container">
+        <header id="main-header"></header>
+        
+        <section id="summary" class="section"></section>
+        
+        <section id="experience" class="section">
+            <h2>ניסיון תעסוקתי</h2>
+        </section>
+
+        <section id="skills" class="section">
+            <h2>כישורים טכניים ופרויקטים</h2>
+        </section>
+
+        <section id="education" class="section">
+            <h2>השכלה והכשרות מקצועיות</h2>
+        </section>
+
+        <section id="languages" class="section">
+             <h2>שפות</h2>
+        </section>
+    </div>
+
+    <script>
+        // ======================================================================
+        // ===       כדי לעדכן את קורות החיים, שנה את המידע באובייקט הבא       ===
+        // ======================================================================
+        const resumeData = {
+            fullName: "ליפז נוסן",
+            contact: {
+                phone: "053-2191924",
+                email: "lipaz.n2@gmail.com",
+                linkedin: "" // הוסף כאן קישור ללינקדאין שלך
+            },
+            summary: "איש שירות וטכנולוגיה בעל ניסיון במתן תמיכה טכנית, שירות לקוחות ומכירות. בעל רקע ביזמות, הקמה וניהול של פרויקטים אינטרנטיים ובניית אתרים. בעל זיקה טכנולוגית, יכולת למידה עצמית גבוהה ומוטיבציה להשתלב ולהתפתח בתפקידים טכניים.",
+            experience: [
+                {
+                    title: "מוקדן שירות ותמיכה טכנית",
+                    company: "סלקום",
+                    dates: "2025 - היום",
+                    points: [
+                        "מתן שירות לקוחות ותמיכה טכנית בסביבה טכנולוגית.",
+                        "עמידה ביעדי מכירה ועבודה עם מערכות מידע מרובות."
+                    ]
+                },
+                {
+                    title: "מנהל משמרת",
+                    company: "חברת דלק",
+                    dates: "2023-2024",
+                    points: [
+                        "ניהול תפעולי של המשמרת וצוות העובדים.",
+                        "אחריות על עמידה ביעדים, ניהול כספים ופתרון בעיות בזמן אמת."
+                    ]
+                },
+                {
+                    title: "עצמאי - שירותים דיגיטליים לעסקים",
+                    company: "",
+                    dates: "2023-2024",
+                    points: [
+                        "בניית אתרי אינטרנט ודפי נחיתה לעסקים באמצעות WordPress.",
+                        "ניהול קשרי לקוחות B2B ו-B2C וניהול משא ומתן עם ספקים.",
+                        "הקמה וייעוץ לנכסים דיגיטליים בתחום התיירות (Airbnb, Booking)."
+                    ]
+                }
+            ],
+            skills: [
+                 {
+                    name: "בניית אתרים",
+                    description: "ניסיון מעשי בבניית אתרים ודפי נחיתה בפלטפורמת WordPress."
+                },
+                {
+                    name: "חומרה ותשתיות",
+                    description: "ידע בפירמוט מחשבים, התקנת מערכות הפעלה ופתרון תקלות טכניות."
+                },
+                {
+                    name: "פרויקט \"גיבוש בלמידה\" (מייסד שותף)",
+                    description: "הקמת מיזם אינטרנטי לחיבור בין מורים לתלמידים לשיעורי אונליין, כולל ניהול הפרויקט והתוכן."
+                }
+            ],
+            education: [
+                {
+                    degree: "קורסים מקצועיים בתחום ה-IT והמחשוב",
+                    institution: "מכללת ג'ון ברייס",
+                    details: "הכשרה הכוללת תשתיות, חומרה והיכרות עם מערכות טכנולוגיות."
+                },
+                {
+                    degree: "בגרות מלאה",
+                    institution: "בית הספר התיכון בית ירח",
+                    details: "מגמת ניהול עסקי וחשבונאות."
+                }
+            ],
+            languages: [
+                { name: "עברית", level: "שפת אם" },
+                { name: "אנגלית", level: "רמה טובה" }
+            ]
+        };
+
+        // ======================================================================
+        // ===              הקוד שמייצר את הדף - אין צורך לגעת כאן            ===
+        // ======================================================================
+        document.addEventListener('DOMContentLoaded', () => {
+            // Header
+            const header = document.getElementById('main-header');
+            header.innerHTML = `
+                <h1>${resumeData.fullName}</h1>
+                <div class="contact-info">
+                    <a href="mailto:${resumeData.contact.email}">${resumeData.contact.email}</a> |
+                    <span>${resumeData.contact.phone}</span>
+                    ${resumeData.contact.linkedin ? ` | <a href="${resumeData.contact.linkedin}" target="_blank">LinkedIn</a>` : ''}
+                </div>
+            `;
+            
+            // Summary
+            const summary = document.getElementById('summary');
+            summary.innerHTML = `<h2>תמצית</h2><p>${resumeData.summary}</p>`;
+            
+            // Experience
+            const experience = document.getElementById('experience');
+            resumeData.experience.forEach(job => {
+                const points = job.points.map(p => `<li>${p}</li>`).join('');
+                experience.innerHTML += `
+                    <div class="job">
+                        <div class="dates">${job.dates}</div>
+                        <div class="job-title">${job.title}</div>
+                        <div class="company">${job.company}</div>
+                        <ul>${points}</ul>
+                    </div>
+                `;
+            });
+            
+            // Skills
+            const skills = document.getElementById('skills');
+            const skillItems = resumeData.skills.map(skill => `
+                <div class="project">
+                    <div class="project-title">${skill.name}</div>
+                    <p>${skill.description}</p>
+                </div>
+            `).join('');
+            skills.innerHTML += skillItems;
+
+
+            // Education
+            const education = document.getElementById('education');
+            resumeData.education.forEach(edu => {
+                education.innerHTML += `
+                    <div class="education-item">
+                        <div class="degree">${edu.degree}</div>
+                        <div class="institution">${edu.institution}</div>
+                        <p>${edu.details}</p>
+                    </div>
+                `;
+            });
+            
+            // Languages
+            const languages = document.getElementById('languages');
+            const langItems = resumeData.languages.map(lang => `<li><strong>${lang.name}:</strong> ${lang.level}</li>`).join('');
+            languages.innerHTML += `<ul class="languages-list">${langItems}</ul>`;
+        });
+    </script>
+
+</body>
+</html>
