@@ -10,20 +10,27 @@
     <meta property="og:description" content="ניסיון בשירות, תמיכה טכנית וניהול פרויקטים טכנולוגיים.">
     <meta property="og:image" content="">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --text-color: #34495e;
-            --bg-color: #f4f6f9;
-            --container-bg: #ffffff;
-            --border-color: #e0e0e0;
+            /* --- ערכת צבעים אחידה מכרטיס הביקור --- */
+            --primary-color: #0A66C2; /* LinkedIn Blue */
+            --secondary-color: #25D366; /* WhatsApp Green for accents */
+            --background-color: #f0f2f5;
+            --card-background: #ffffff;
+            --text-color: #1c1e21;
+            --subtle-text-color: #606770;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --border-color: #e0e6eb;
         }
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: var(--bg-color);
+            font-family: 'Assistant', sans-serif;
+            background-color: var(--background-color);
             color: var(--text-color);
             line-height: 1.6;
             margin: 0; padding: 0; display: flex; justify-content: center;
@@ -32,9 +39,9 @@
             max-width: 850px;
             width: 100%;
             margin: 20px; padding: 40px;
-            background: var(--container-bg);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
+            background: var(--card-background);
+            box-shadow: 0 8px 32px var(--shadow-color);
+            border-radius: 24px; /* התאמה לרדיוס של כרטיס הביקור */
             position: relative;
         }
         nav {
@@ -43,43 +50,45 @@
         }
         .nav-button {
             background-color: var(--primary-color);
-            color: white; padding: 8px 15px; border-radius: 5px;
-            text-decoration: none; font-weight: bold; transition: background-color 0.3s;
+            color: white; padding: 10px 18px; border-radius: 12px;
+            text-decoration: none; font-weight: 600; transition: all 0.3s ease;
+            font-size: 1rem;
         }
         .nav-button.export { background-color: var(--secondary-color); border: none; cursor: pointer; }
-        .nav-button:hover { background-color: #34495e; }
-        .nav-button.export:hover { background-color: #2980b9; }
+        .nav-button:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
 
         header {
             display: flex; flex-direction: column; align-items: center; text-align: center;
-            border-bottom: 2px solid var(--secondary-color);
+            border-bottom: 2px solid var(--primary-color);
             padding-bottom: 20px; margin-bottom: 30px;
         }
         #profile-pic {
             width: 120px; height: 120px;
             border-radius: 50%; object-fit: cover; margin-bottom: 15px;
-            border: 3px solid var(--secondary-color);
-            background-color: #eee; /* Placeholder color */
+            border: 4px solid var(--card-background);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
         }
-        header h1 { margin: 0; color: var(--primary-color); font-size: 2.5em; }
+        header h1 { margin: 0; color: var(--text-color); font-size: 2.5em; font-weight: 700; }
         .contact-info {
             margin-top: 15px; display: flex; justify-content: center;
-            flex-wrap: wrap; gap: 20px;
+            flex-wrap: wrap; gap: 20px; font-weight: 600;
         }
         .contact-item {
             display: flex; align-items: center; font-size: 1em;
-            color: var(--text-color); text-decoration: none;
+            color: var(--subtle-text-color); text-decoration: none;
+            transition: color 0.3s;
         }
-        .contact-item i { color: var(--secondary-color); margin-left: 8px; font-size: 1.2em; }
+        .contact-item i { color: var(--primary-color); margin-left: 8px; font-size: 1.2em; }
         .contact-item .print-only { display: none; }
-        a.contact-item:hover { color: var(--secondary-color); }
+        a.contact-item:hover { color: var(--primary-color); }
         
         h2 {
-            color: var(--primary-color);
-            border-bottom: 1px solid var(--bg-color);
+            color: var(--text-color);
+            border-bottom: 1px solid var(--border-color);
             padding-bottom: 10px; margin-top: 30px; display: flex; align-items: center;
+            font-weight: 700;
         }
-        h2 .section-icon { margin-left: 10px; font-size: 0.9em; color: var(--secondary-color); }
+        h2 .section-icon { margin-left: 10px; font-size: 1.1rem; color: var(--primary-color); }
         
         /* GitHub Portfolio Styles */
         #portfolio-grid {
@@ -90,36 +99,37 @@
         }
         .repo-card {
             border: 1px solid var(--border-color);
-            border-radius: 8px;
+            border-radius: 12px; /* התאמת רדיוס */
             padding: 20px;
-            display: flex;
-            flex-direction: column;
-            transition: box-shadow 0.3s, transform 0.3s;
+            display: flex; flex-direction: column;
+            transition: all 0.3s ease;
             background-color: #fff;
         }
         .repo-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px var(--shadow-color);
         }
-        .repo-card h3 { margin: 0 0 10px 0; font-size: 1.2em; color: var(--primary-color); }
+        .repo-card h3 { margin: 0 0 10px 0; font-size: 1.2em; color: var(--primary-color); font-weight: 700;}
         .repo-card h3 a { color: inherit; text-decoration: none; }
-        .repo-card p { font-size: 0.9em; flex-grow: 1; margin-bottom: 15px; }
+        .repo-card p { font-size: 0.9em; flex-grow: 1; margin-bottom: 15px; color: var(--subtle-text-color); }
         .repo-footer {
             display: flex; justify-content: space-between; align-items: center;
-            font-size: 0.8em; color: #7f8c8d;
+            font-size: 0.8em; color: var(--subtle-text-color);
         }
         .repo-language span {
-            display: inline-block; padding: 3px 8px;
-            background-color: var(--bg-color); border-radius: 12px;
+            display: inline-block; padding: 3px 10px;
+            background-color: #eaf2f8; /* רקע עדין לשפה */
+            color: var(--primary-color);
+            border-radius: 12px; font-weight: 600;
         }
-        #portfolio-loading { text-align: center; color: #7f8c8d; }
+        #portfolio-loading { text-align: center; color: var(--subtle-text-color); }
         
-        /* General Styles... */
+        /* General Styles */
         .section { margin-bottom: 20px; }
         .job, .education-item, .project, .certification-item { margin-bottom: 20px; page-break-inside: avoid; }
-        .job-title, .degree, .project-title, .certification-title { font-weight: bold; font-size: 1.1em; color: var(--secondary-color); }
-        .company, .institution { font-style: italic; }
-        .dates { float: left; font-size: 0.9em; color: #7f8c8d; }
+        .job-title, .degree, .project-title, .certification-title { font-weight: 700; font-size: 1.1em; color: var(--primary-color); }
+        .company, .institution { font-style: normal; color: var(--subtle-text-color); }
+        .dates { float: left; font-size: 0.9em; color: var(--subtle-text-color); font-weight: 600; }
         ul { padding-right: 20px; margin-top: 5px; }
         li { margin-bottom: 5px; }
         .languages-list { list-style: none; padding: 0; }
@@ -133,7 +143,7 @@
         }
 
         @media print {
-            body { background-color: #fff; font-size: 10pt; }
+            body { background-color: #fff; font-size: 10pt; font-family: 'Arial', sans-serif; }
             .resume-container { box-shadow: none; margin: 0; padding: 0; width: 100%; border-radius: 0; }
             nav, #github-portfolio { display: none; }
             #profile-pic { display: none; }
@@ -154,20 +164,13 @@
 
     <div class="resume-container">
         <nav>
-            <a href="index.html" class="nav-button back-link"><i class="fas fa-arrow-right"></i> חזרה לאתר הראשי</a>
+            <a href="index.html" class="nav-button back-link"><i class="fas fa-arrow-right"></i> חזרה לכרטיס הביקור</a>
             <button class="nav-button export" onclick="window.print()"><i class="fas fa-file-pdf"></i> ייצוא ל-PDF</button>
         </nav>
 
         <header id="main-header"></header>
-        
         <section id="summary" class="section"></section>
-        
-        <section id="github-portfolio" class="section">
-            <h2><i class="fab fa-github section-icon"></i>תיק עבודות מ-GitHub</h2>
-            <div id="portfolio-grid"></div>
-            <p id="portfolio-loading">טוען פרויקטים...</p>
-        </section>
-
+        <section id="github-portfolio" class="section"></section>
         <section id="experience" class="section"></section>
         <section id="skills" class="section"></section>
         <section id="education" class="section"></section>
@@ -179,7 +182,6 @@
     <script>
         const resumeData = {
             githubUsername: "ModerniMan",
-            // ... שאר הנתונים ...
             fullName: "ליפז נוסן",
             contact: {
                 phone: "053-2191924",
@@ -189,7 +191,12 @@
             summary: "בעל ניסיון מגוון בשירות לקוחות, תמיכה טכנית, מכירות וניהול. בעל רקע וניסיון מוכח בניהול פרויקטים ומיזמים באינטרנט, בניית אתרים ופתרון תקלות טכניות. מחפש תפקיד המשלב יכולות טכניות עם עבודה מול לקוחות.",
             experience: [
                 { title: "מוקדן שירות, תמיכה טכנית ומכירות", company: "סלקום", dates: "2025", points: ["שירות לקוחות, עבודה מול מערכות מרובות, תמיכה טכנית, מכירות."] },
-                // ... More experience items
+                { title: "קופאי", company: "יוחננוף", dates: "2024-2025", points: ["שירות לקוחות, תפעול קופות עצמאיות, עבודה מול ממשקים ופתרון בעיות."] },
+                { title: "מוכרן ומנהל משמרת", company: "דלק", dates: "2023-2024", points: ["ניהול משמרת, שירות לקוחות, אחריות על הפקדות כספים ועמידה ביעדים."] },
+                { title: "עצמאי - שירותים לעסקים ופרטיים", company: "", dates: "2023-2024", points: ["בניית אתרים ודפי נחיתה באמצעות WordPress.", "ניהול מו\"מ מול לקוחות B2B ו-B2C ונותני שירות.", "ייעוץ והקמת נכסים דיגיטליים בתחום התיירות (Airbnb, Booking)."] },
+                { title: "מנהל חנות", company: "בית חב\"ד רמת הגולן (ע\"ר)", dates: "2022", points: ["ניהול שוטף של חנות העמותה, כולל עבודה על מערכות Back Office.", "ניהול מו\"מ עם ספקים, הנהלת הקניון וגורמי B2B נוספים."] },
+                { title: "מוקדן שירות ותמיכה טכנית", company: "תקשוב בע\"מ (עבור שירותי בריאות כללית)", dates: "2020-2022", points: ["מענה ללקוחות, קביעת תורים, תמיכה טכנית ועבודה מול מערכות מרובות."] },
+                { title: "ניסיון תעסוקתי נוסף", company: "", dates: "2017-2020", points: ["מגוון תפקידים, ביניהם: מנהל קופות (לונה גל), מלצר (מלון סטאי כנרת), קופאי (ויקטורי) ועובד כללי."] }
             ],
             skills: [
                  { name: "ניהול פרויקטים ומיזמים באינטרנט", description: "שותף להקמת פרויקט אינטרנטי, אחריות על תפעול, ניו-מדיה וניהול כתבים. שותף במיזם \"גיבוש בלמידה\" לגיוס מורים לשיעורי אונליין." },
@@ -208,18 +215,15 @@
             const ogImageMeta = document.querySelector('meta[property="og:image"]');
 
             try {
-                // Fetch user profile data (for profile picture)
                 const userResponse = await fetch(`https://api.github.com/users/${username}`);
                 if (!userResponse.ok) throw new Error(`GitHub User API Error: ${userResponse.status}`);
                 const userData = await userResponse.json();
                 
-                // Update profile picture and social sharing image
                 if (userData.avatar_url) {
                     profilePicElement.src = userData.avatar_url;
                     ogImageMeta.content = userData.avatar_url;
                 }
 
-                // Fetch user repositories
                 const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=6`);
                 if (!reposResponse.ok) throw new Error(`GitHub Repos API Error: ${reposResponse.status}`);
                 const repos = await reposResponse.json();
@@ -242,10 +246,9 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             const d = resumeData;
-            // Build the static parts of the resume
             const header = document.getElementById('main-header');
             const linkedinUser = d.contact.linkedin.split('/').pop();
-            header.innerHTML = `<img id="profile-pic" alt="תמונת פרופיל של ${d.fullName}"><h1>${d.fullName}</h1><div class="contact-info"><a href="mailto:${d.contact.email}" class="contact-item"><i class="fas fa-envelope"></i><span class="print-only">מייל: </span><span>${d.contact.email}</span></a><div class="contact-item"><i class="fas fa-phone"></i><span class="print-only">טלפון: </span><span>${d.contact.phone}</span></div><a href="${d.contact.linkedin}" target="_blank" rel="noopener noreferrer" class="contact-item"><i class="fab fa-linkedin"></i><span class="print-only">לינקדאין: </span><span>${linkedinUser}</span></a></div>`;
+            header.innerHTML = `<img id="profile-pic" alt="תמונת פרופיל של ${d.fullName}"><h1 style="color: ${d.nameColor || 'var(--text-color)'}">${d.fullName}</h1><div class="contact-info"><a href="mailto:${d.contact.email}" class="contact-item"><i class="fas fa-envelope"></i><span class="print-only">מייל: </span><span>${d.contact.email}</span></a><div class="contact-item"><i class="fas fa-phone"></i><span class="print-only">טלפון: </span><span>${d.contact.phone}</span></div><a href="${d.contact.linkedin}" target="_blank" rel="noopener noreferrer" class="contact-item"><i class="fab fa-linkedin"></i><span class="print-only">לינקדאין: </span><span>${linkedinUser}</span></a></div>`;
             document.getElementById('summary').innerHTML = `<h2><i class="fas fa-user section-icon"></i>תמצית</h2><p>${d.summary}</p>`;
             document.getElementById('experience').innerHTML = `<h2><i class="fas fa-briefcase section-icon"></i>ניסיון תעסוקתי</h2>` + d.experience.map(j => `<div class="job"><div class="dates">${j.dates}</div><div class="job-title">${j.title}</div><div class="company">${j.company}</div><ul>${(j.points).map(p => `<li>${p}</li>`).join('')}</ul></div>`).join('');
             document.getElementById('skills').innerHTML = `<h2><i class="fas fa-lightbulb section-icon"></i>כישורים ופרויקטים</h2>` + d.skills.map(s => `<div class="project"><div class="project-title">${s.name}</div><p>${s.description}</p></div>`).join('');
@@ -254,7 +257,6 @@
             document.getElementById('national-service').innerHTML = `<h2><i class="fas fa-flag section-icon"></i>שירות לאומי</h2>` + d.nationalService.map(ns => `<div class="job"><div class="dates">${ns.dates}</div><div class="job-title">${ns.role}</div><div class="company">${ns.location}</div></div>`).join('');
             document.getElementById('languages').innerHTML = `<h2><i class="fas fa-language section-icon"></i>שפות</h2><ul class="languages-list">${d.languages.map(l => `<li><strong>${l.name}:</strong> ${l.level}</li>`).join('')}</ul>`;
 
-            // Fetch dynamic GitHub data
             fetchGitHubData(d.githubUsername);
         });
     </script>
