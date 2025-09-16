@@ -1,31 +1,39 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>הקישורים של ModerniMan</title>
-    
+    <title>ליפז נוסן - ModerniMan</title>
+
+    <meta name="description" content="כרטיס הביקור הדיגיטלי של ליפז נוסן. יזם ואיש דיגיטל המתמחה בפתרונות טכנולוגיים ושירות לקוחות.">
+    <meta property="og:title" content="ליפז נוסן - ModerniMan">
+    <meta property="og:description" content="כרטיס הביקור הדיגיטלי של ליפז נוסן.">
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/174987178?v=4"> <meta property="og:type" content="website">
+    <meta property="og:url" content="https://moderniman.co.il">
+
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    
     <style>
         :root {
-            --primary-color: #0A66C2; /* LinkedIn Blue */
-            --instagram-color: #E4405F;
-            --contact-color: #25D366; /* WhatsApp Green */
+            --primary-color: #0A66C2;
+            --whatsapp-color: #25D366;
             --background-color: #f0f2f5;
             --card-background: #ffffff;
             --text-color: #1c1e21;
             --subtle-text-color: #606770;
             --shadow-color: rgba(0, 0, 0, 0.1);
-            --error-color: #e74c3c;
-            --success-color: #2ecc71;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'Assistant', sans-serif;
@@ -39,223 +47,138 @@
         }
 
         .container {
+            max-width: 400px;
+            width: 100%;
             background-color: var(--card-background);
             border-radius: 24px;
             box-shadow: 0 8px 32px var(--shadow-color);
             padding: 40px;
             padding-top: 80px;
-            width: 100%;
-            max-width: 400px;
             text-align: center;
-            animation: fadeIn 0.8s ease-out;
             position: relative;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        .profile-pic-container {
+            position: absolute;
+            top: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 120px;
         }
 
         .profile-pic {
-            width: 110px;
-            height: 110px;
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid var(--card-background);
+            border: 4px solid var(--card-background);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-            position: absolute;
-            top: -55px;
-            left: 50%;
-            transform: translateX(-50%);
+            object-fit: cover;
         }
 
         h1 {
             font-size: 2rem;
             font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        /* --- עיצוב חדש לתגית --- */
+        .tagline {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: var(--subtle-text-color);
+            margin-bottom: 24px;
+        }
+
+        .links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
             margin-bottom: 30px;
         }
 
-        ul { list-style-type: none; padding: 0; width: 100%; }
-        li { margin-bottom: 15px; }
-
         .link-button {
             display: flex;
+            justify-content: center;
             align-items: center;
-            justify-content: space-between;
-            padding: 14px 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #f0f2f5;
             border-radius: 12px;
             text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            color: white;
-            width: 100%;
-            border: none; /* For button reset */
-            font-family: 'Assistant', sans-serif; /* For button font */
-            cursor: pointer;
+            transition: all 0.3s ease; /* --- הוספת אנימציה --- */
         }
+
         .link-button:hover {
-            transform: translateY(-3px);
-        }
-        .link-button span {
-            flex-grow: 1;
-            text-align: center;
-        }
-        .link-button i {
-            font-size: 1.4rem;
+            transform: translateY(-5px); /* --- הוספת אנימציה --- */
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
         }
 
-        .link-linkedin { background-color: var(--primary-color); }
-        .link-linkedin:hover { box-shadow: 0 6px 20px rgba(10, 102, 194, 0.3); }
-
-        .link-instagram { background-color: var(--instagram-color); }
-        .link-instagram:hover { box-shadow: 0 6px 20px rgba(228, 64, 95, 0.3); }
+        .link-button i,
+        .link-button img {
+            font-size: 24px;
+            color: var(--text-color);
+        }
         
-        .link-contact { background-color: var(--contact-color); }
-        .link-contact:hover { box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3); }
+        .link-button img {
+            width: 24px;
+            height: 24px;
+        }
 
-        /* --- Modal Styles --- */
-        .modal {
-            display: none; position: fixed; z-index: 1000;
-            left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            align-items: center; justify-content: center;
+        .link-button.linkedin { background-color: #eaf2f8; }
+        .link-button.linkedin i { color: #0A66C2; }
+        .link-button.whatsapp { background-color: #e9f8ee; }
+        .link-button.whatsapp i { color: #25D366; }
+        
+        /* --- עיצוב חדש לכפתור קריאה לפעולה --- */
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
         }
-        .modal-content {
-            background-color: #fff; margin: auto; padding: 30px;
-            border-radius: 16px; width: 90%; max-width: 450px;
-            position: relative; animation: slideIn 0.5s ease-out;
-        }
-        @keyframes slideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        .close-btn {
-            color: #aaa; position: absolute; left: 20px; top: 15px;
-            font-size: 28px; font-weight: bold; cursor: pointer;
-        }
-        .modal h2 { margin-bottom: 20px; }
-        .modal-form input, .modal-form textarea {
-            width: 100%; padding: 12px; margin-bottom: 15px;
-            border: 1px solid #ccc; border-radius: 8px;
-            font-family: 'Assistant', sans-serif; font-size: 1rem;
-        }
-        .modal-form button {
-            width: 100%; padding: 15px; border: none; border-radius: 8px;
-            background-color: var(--contact-color); color: white;
-            font-size: 1.1rem; font-weight: 600; cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .modal-form button:hover { background-color: #1ebe57; }
-        #form-status { margin-top: 15px; font-weight: 600; }
-        .success { color: var(--success-color); }
-        .error { color: var(--error-color); }
 
-        @media (max-width: 480px) {
-            .container { padding: 25px; padding-top: 70px; }
-            .profile-pic { width: 90px; height: 90px; top: -45px; }
-            h1 { font-size: 1.8rem; }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(10, 102, 194, 0.3);
         }
+
     </style>
 </head>
+
 <body>
     <div class="container">
-        <img src="https://placehold.co/150x150/7F56D9/FFFFFF?text=MM" alt="תמונת פרופיל" class="profile-pic">
-        
-        <h1>Lipaz Nussen</h1>
-
-        <ul>
-            <li>
-                <a href="https://il.linkedin.com/in/lipaznussen" target="_blank" class="link-button link-linkedin">
-                    <span>LinkedIn</span>
-                    <i class="fab fa-linkedin"></i>
-                </a>
-            </li>
-            <li>
-                <a href="https://www.instagram.com/" target="_blank" class="link-button link-instagram">
-                    <span>Instagram</span>
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </li>
-            <li>
-                <button id="contactBtn" class="link-button link-contact">
-                    <span>יצירת קשר</span>
-                    <i class="fas fa-paper-plane"></i>
-                </button>
-            </li>
-        </ul>
-    </div>
-
-    <!-- The Modal -->
-    <div id="contactModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <h2>השארת פנייה</h2>
-            <form id="contact-form" class="modal-form">
-                <input type="text" name="contact" placeholder="מייל או טלפון לחזרה" required>
-                <textarea name="message" rows="4" placeholder="איך אפשר לעזור?" required></textarea>
-                <button type="submit">שליחה</button>
-                <p id="form-status"></p>
-            </form>
+        <div class="profile-pic-container">
+            <img src="https://avatars.githubusercontent.com/u/174987178?v=4" alt="תמונת פרופיל של ליפז נוסן"
+                class="profile-pic">
         </div>
+        <h1>ליפז נוסן</h1>
+
+        <p class="tagline">יזם ואיש דיגיטל | פתרונות טכנולוגיים</p>
+
+        <div class="links">
+            <a href="https://www.linkedin.com/in/lipaznussen" target="_blank" class="link-button linkedin">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://wa.me/972532191924" target="_blank" class="link-button whatsapp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://github.com/ModerniMan" target="_blank" class="link-button github">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="mailto:lipaz@moderniman.co.il" class="link-button email">
+                <i class="far fa-envelope"></i>
+            </a>
+        </div>
+        
+        <a href="index1.html" class="cta-button">צפה בקורות החיים המלאים</a>
+
     </div>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Modal handling
-        const modal = document.getElementById('contactModal');
-        const btn = document.getElementById('contactBtn');
-        const span = document.getElementsByClassName('close-btn')[0];
-
-        btn.onclick = function() { modal.style.display = 'flex'; }
-        span.onclick = function() { modal.style.display = 'none'; }
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
-        }
-
-        // Form submission handling
-        const form = document.getElementById('contact-form');
-        const status = document.getElementById('form-status');
-
-        async function handleSubmit(event) {
-            event.preventDefault();
-            const data = new FormData(event.target);
-            
-            const formspreeEndpoint = 'https://formspree.io/f/xqadkyod';
-
-            fetch(formspreeEndpoint, {
-                method: 'POST',
-                body: data,
-                headers: { 'Accept': 'application/json' }
-            }).then(response => {
-                if (response.ok) {
-                    status.innerHTML = "תודה! הפנייה נשלחה בהצלחה.";
-                    status.className = 'success';
-                    form.reset();
-                    setTimeout(() => {
-                        modal.style.display = 'none';
-                        status.innerHTML = '';
-                    }, 3000);
-                } else {
-                    response.json().then(data => {
-                        if (Object.hasOwn(data, 'errors')) {
-                            status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
-                        } else {
-                            status.innerHTML = "אופס! משהו השתבש. נסו שוב.";
-                        }
-                        status.className = 'error';
-                    })
-                }
-            }).catch(error => {
-                status.innerHTML = "אופס! משהו השתבש. נסו שוב.";
-                status.className = 'error';
-            });
-        }
-        form.addEventListener("submit", handleSubmit);
-    });
-    </script>
-
 </body>
+
 </html>
