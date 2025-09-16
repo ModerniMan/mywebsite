@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>קורות חיים | ליפז נוסן</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -12,7 +13,6 @@
             --bg-color: #ecf0f1;
             --container-bg: #ffffff;
         }
-
         body {
             font-family: 'Arial', sans-serif;
             background-color: var(--bg-color);
@@ -23,7 +23,6 @@
             display: flex;
             justify-content: center;
         }
-
         .resume-container {
             max-width: 800px;
             width: 100%;
@@ -34,7 +33,6 @@
             border-radius: 8px;
             position: relative;
         }
-
         .export-button {
             position: absolute;
             top: 20px;
@@ -48,352 +46,191 @@
             font-size: 0.9em;
             transition: background-color 0.3s;
         }
-
         .export-button:hover {
             background-color: #2980b9;
         }
-
         header {
             text-align: center;
             border-bottom: 2px solid var(--secondary-color);
             padding-bottom: 20px;
             margin-bottom: 30px;
         }
-
         header h1 {
             margin: 0;
             color: var(--primary-color);
             font-size: 2.5em;
         }
-
-        header .contact-info {
-            margin-top: 10px;
+        /* עיצוב חדש לפרטי הקשר */
+        .contact-info {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
             font-size: 1em;
-            word-wrap: break-word; /* מבטיח שפרטי הקשר לא יגלשו */
-        }
-        
-        header .contact-info a {
-            color: var(--secondary-color);
+            color: var(--text-color);
             text-decoration: none;
-            margin: 0 10px;
-            font-weight: bold;
         }
-
+        .contact-item i {
+            color: var(--secondary-color);
+            margin-left: 8px; /* רווח בין האייקון לטקסט */
+            font-size: 1.2em;
+        }
+        .contact-item .print-only {
+            display: none; /* הסתרת התווית במצב רגיל */
+        }
+        a.contact-item:hover {
+            color: var(--secondary-color);
+        }
         h2 {
             color: var(--primary-color);
             border-bottom: 1px solid var(--bg-color);
             padding-bottom: 10px;
             margin-top: 30px;
         }
-
-        .section {
-            margin-bottom: 20px;
-        }
-
+        .section { margin-bottom: 20px; }
         .job, .education-item, .project, .certification-item {
             margin-bottom: 20px;
             page-break-inside: avoid;
         }
-
         .job-title, .degree, .project-title, .certification-title {
             font-weight: bold;
             font-size: 1.1em;
             color: var(--secondary-color);
         }
-
-        .company, .institution {
-            font-style: italic;
-        }
-
+        .company, .institution { font-style: italic; }
         .dates {
             float: left;
             font-size: 0.9em;
             color: #7f8c8d;
         }
-
-        ul {
-            padding-right: 20px;
-            margin-top: 5px;
-        }
+        ul { padding-right: 20px; margin-top: 5px; }
+        li { margin-bottom: 5px; }
+        .languages-list { list-style: none; padding: 0; }
         
-        li {
-            margin-bottom: 5px;
-        }
-
-        .languages-list {
-            list-style: none;
-            padding: 0;
-        }
-        
-        /* ================================================= */
-        /* ===          הגדרות עיצוב למובייל             === */
-        /* ================================================= */
         @media (max-width: 600px) {
-            .resume-container {
-                margin: 0;
-                padding: 20px;
-                border-radius: 0;
-            }
-            .export-button {
-                position: static; /* משנה את המיקום לרגיל */
-                display: block;
-                width: 100%;
-                margin-bottom: 20px;
-            }
-            header h1 {
-                font-size: 2em;
-            }
-            .dates {
-                float: none;
-                display: block;
-                margin-bottom: 5px;
-            }
+            .resume-container { margin: 0; padding: 20px; border-radius: 0; }
+            .export-button { position: static; display: block; width: 100%; margin-bottom: 20px; }
+            header h1 { font-size: 2em; }
+            .dates { float: none; display: block; margin-bottom: 5px; }
+            .contact-info { flex-direction: column; gap: 10px; align-items: center; }
         }
 
-        /* ================================================= */
-        /* ===          הגדרות עיצוב להדפסה בלבד         === */
-        /* ================================================= */
         @media print {
-            body {
-                background-color: #fff;
-                font-size: 10pt;
-            }
-            .resume-container {
-                box-shadow: none;
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                border-radius: 0;
-            }
-            .export-button {
-                display: none;
-            }
-            header {
-                padding-bottom: 10px;
-                margin-bottom: 20px;
-            }
-            header h1 {
-                font-size: 2em;
-            }
-            header .contact-info {
-                font-size: 0.9em;
-            }
-            h2 {
-                font-size: 1.2em;
-                padding-bottom: 5px;
-                margin-top: 15px;
-            }
-            .section {
-                margin-bottom: 10px;
-            }
-            .job, .education-item, .project, .certification-item {
-                margin-bottom: 10px;
-            }
-            ul {
-                padding-right: 15px;
-                margin-top: 2px;
-            }
-            li, p {
-                margin-bottom: 2px;
-                line-height: 1.4;
-            }
+            body { background-color: #fff; font-size: 10pt; }
+            .resume-container { box-shadow: none; margin: 0; padding: 0; width: 100%; border-radius: 0; }
+            .export-button { display: none; }
+            header { padding-bottom: 10px; margin-bottom: 20px; }
+            header h1 { font-size: 2em; }
+            .contact-info { justify-content: space-around; }
+            .contact-item i { display: none; } /* הסתרת האייקונים בהדפסה */
+            .contact-item .print-only { display: inline; font-weight: bold; } /* הצגת התוויות בהדפסה */
+            h2 { font-size: 1.2em; padding-bottom: 5px; margin-top: 15px; }
+            .section { margin-bottom: 10px; }
+            .job, .education-item, .project, .certification-item { margin-bottom: 10px; }
+            ul { padding-right: 15px; margin-top: 2px; }
+            li, p { margin-bottom: 2px; line-height: 1.4; }
         }
     </style>
 </head>
 <body>
 
     <div class="resume-container">
-        <button class="export-button" onclick="window.print()">ייצוא ל-PDF</button>
-
+        <button class="export-button" onclick="window.print()"><i class="fas fa-file-pdf"></i> ייצוא ל-PDF</button>
         <header id="main-header"></header>
-        
-        <section id="summary" class="section">
-             <h2>תמצית</h2>
-        </section>
-        
-        <section id="experience" class="section">
-            <h2>ניסיון תעסוקתי</h2>
-        </section>
-
-        <section id="skills" class="section">
-            <h2>כישורים ופרויקטים</h2>
-        </section>
-
-        <section id="education" class="section">
-            <h2>השכלה</h2>
-        </section>
-
-        <section id="certifications" class="section">
-            <h2>קורסים והסמכות</h2>
-        </section>
-
-        <section id="national-service" class="section">
-            <h2>שירות לאומי</h2>
-        </section>
-
-        <section id="languages" class="section">
-             <h2>שפות</h2>
-        </section>
+        <section id="summary" class="section"><h2>תמצית</h2></section>
+        <section id="experience" class="section"><h2>ניסיון תעסוקתי</h2></section>
+        <section id="skills" class="section"><h2>כישורים ופרויקטים</h2></section>
+        <section id="education" class="section"><h2>השכלה</h2></section>
+        <section id="certifications" class="section"><h2>קורסים והסמכות</h2></section>
+        <section id="national-service" class="section"><h2>שירות לאומי</h2></section>
+        <section id="languages" class="section"><h2>שפות</h2></section>
     </div>
 
     <script>
-        // ======================================================================
-        // ===            המידע לקורות החיים שלך - ערוך רק כאן                ===
-        // ======================================================================
         const resumeData = {
             fullName: "ליפז נוסן",
             contact: {
                 phone: "053-2191924",
-                email: "lipaz@moderniman.co.il", // <-- המייל עודכן כאן
+                email: "lipaz@moderniman.co.il",
                 linkedin: "https://www.linkedin.com/in/lipaznussen" 
             },
             summary: "בעל ניסיון מגוון בשירות לקוחות, תמיכה טכנית, מכירות וניהול. בעל רקע וניסיון מוכח בניהול פרויקטים ומיזמים באינטרנט, בניית אתרים ופתרון תקלות טכניות. מחפש תפקיד המשלב יכולות טכניות עם עבודה מול לקוחות.",
             experience: [
-                {
-                    title: "מוקדן שירות, תמיכה טכנית ומכירות",
-                    company: "סלקום",
-                    dates: "2025",
-                    points: ["שירות לקוחות, עבודה מול מערכות מרובות, תמיכה טכנית, מכירות."]
-                },
-                {
-                    title: "קופאי",
-                    company: "יוחננוף",
-                    dates: "2024-2025",
-                    points: ["שירות לקוחות, תפעול קופות עצמאיות, עבודה מול ממשקים ופתרון בעיות."]
-                },
-                {
-                    title: "מוכרן ומנהל משמרת",
-                    company: "דלק",
-                    dates: "2023-2024",
-                    points: ["ניהול משמרת, שירות לקוחות, אחריות על הפקדות כספים ועמידה ביעדים."]
-                },
-                {
-                    title: "עצמאי - שירותים לעסקים ופרטיים",
-                    company: "",
-                    dates: "2023-2024",
-                    points: [
-                        "בניית אתרים ודפי נחיתה באמצעות WordPress.",
-                        "ניהול מו\"מ מול לקוחות B2B ו-B2C ונותני שירות.",
-                        "ייעוץ והקמת נכסים דיגיטליים בתחום התיירות (Airbnb, Booking)."
-                    ]
-                },
-                {
-                    title: "מנהל חנות",
-                    company: "בית חב\"ד רמת הגולן (ע\"ר)",
-                    dates: "2022",
-                    points: [
-                        "ניהול שוטף של חנות העמותה, כולל עבודה על מערכות Back Office.",
-                        "ניהול מו\"מ עם ספקים, הנהלת הקניון וגורמי B2B נוספים."
-                    ]
-                },
-                 {
-                    title: "מוקדן שירות ותמיכה טכנית",
-                    company: "תקשוב בע\"מ (עבור שירותי בריאות כללית)",
-                    dates: "2020-2022",
-                    points: ["מענה ללקוחות, קביעת תורים, תמיכה טכנית ועבודה מול מערכות מרובות."]
-                },
-                {
-                    title: "ניסיון תעסוקתי נוסף",
-                    company: "",
-                    dates: "2017-2020",
-                    points: ["מגוון תפקידים, ביניהם: מנהל קופות (לונה גל), מלצר (מלון סטאי כנרת), קופאי (ויקטורי) ועובד כללי."]
-                }
+                { title: "מוקדן שירות, תמיכה טכנית ומכירות", company: "סלקום", dates: "2025", points: ["שירות לקוחות, עבודה מול מערכות מרובות, תמיכה טכנית, מכירות."] },
+                { title: "קופאי", company: "יוחננוף", dates: "2024-2025", points: ["שירות לקוחות, תפעול קופות עצמאיות, עבודה מול ממשקים ופתרון בעיות."] },
+                { title: "מוכרן ומנהל משמרת", company: "דלק", dates: "2023-2024", points: ["ניהול משמרת, שירות לקוחות, אחריות על הפקדות כספים ועמידה ביעדים."] },
+                { title: "עצמאי - שירותים לעסקים ופרטיים", company: "", dates: "2023-2024", points: ["בניית אתרים ודפי נחיתה באמצעות WordPress.", "ניהול מו\"מ מול לקוחות B2B ו-B2C ונותני שירות.", "ייעוץ והקמת נכסים דיגיטליים בתחום התיירות (Airbnb, Booking)."] },
+                { title: "מנהל חנות", company: "בית חב\"ד רמת הגולן (ע\"ר)", dates: "2022", points: ["ניהול שוטף של חנות העמותה, כולל עבודה על מערכות Back Office.", "ניהול מו\"מ עם ספקים, הנהלת הקניון וגורמי B2B נוספים."] },
+                { title: "מוקדן שירות ותמיכה טכנית", company: "תקשוב בע\"מ (עבור שירותי בריאות כללית)", dates: "2020-2022", points: ["מענה ללקוחות, קביעת תורים, תמיכה טכנית ועבודה מול מערכות מרובות."] },
+                { title: "ניסיון תעסוקתי נוסף", company: "", dates: "2017-2020", points: ["מגוון תפקידים, ביניהם: מנהל קופות (לונה גל), מלצר (מלון סטאי כנרת), קופאי (ויקטורי) ועובד כללי."] }
             ],
             skills: [
-                 {
-                    name: "ניהול פרויקטים ומיזמים באינטרנט",
-                    description: "שותף להקמת פרויקט אינטרנטי, אחריות על תפעול, ניו-מדיה וניהול כתבים. שותף במיזם \"גיבוש בלמידה\" לגיוס מורים לשיעורי אונליין."
-                },
-                {
-                    name: "כישורים טכניים",
-                    description: "ניסיון בבניית אתרים, פירמוט מחשבים והתקנת מערכות הפעלה."
-                }
+                { name: "ניהול פרויקטים ומיזמים באינטרנט", description: "שותף להקמת פרויקט אינטרנטי, אחריות על תפעול, ניו-מדיה וניהול כתבים. שותף במיזם \"גיבוש בלמידה\" לגיוס מורים לשיעורי אונליין." },
+                { name: "כישורים טכניים", description: "ניסיון בבניית אתרים, פירמוט מחשבים והתקנת מערכות הפעלה." }
             ],
             education: [
-                {
-                    degree: "בגרות מלאה ותעודה טכנולוגית",
-                    institution: "תיכון \"בית ירח\", עמק הירדן",
-                    details: "מגמת תקשורת וחברה, התמחות במדיה, פרסום, עריכת וידיאו והפקה."
-                }
+                { degree: "בגרות מלאה ותעודה טכנולוגית", institution: "תיכון \"בית ירח\", עמק הירדן", details: "מגמת תקשורת וחברה, התמחות במדיה, פרסום, עריכת וידיאו והפקה." }
             ],
             certifications: [
                 { name: "קורס ברמנים", institution: "זמן אמיתי / איגוד הברמנים הישראלי", year: "2020"},
                 { name: "מגיש עזרה ראשונה", institution: "מגן דוד אדום", year: "2014"}
             ],
-            nationalService: [
-                { role: "עבודת מזכירות", location: "מועצה אזורית עמק הירדן", dates: "2017-2018"}
-            ],
-            languages: [
-                { name: "עברית", level: "שפת אם" },
-                { name: "אנגלית", level: "רמה גבוהה" }
-            ]
+            nationalService: [ { role: "עבודת מזכירות", location: "מועצה אזורית עמק הירדן", dates: "2017-2018"} ],
+            languages: [ { name: "עברית", level: "שפת אם" }, { name: "אנגלית", level: "רמה גבוהה" } ]
         };
-
-        // ======================================================================
-        // ===              הקוד שמייצר את הדף - אין צורך לגעת כאן            ===
-        // ======================================================================
+        
         document.addEventListener('DOMContentLoaded', () => {
             const d = resumeData;
-            document.getElementById('main-header').innerHTML = `
+            const header = document.getElementById('main-header');
+            
+            // --- בניית פרטי הקשר עם אייקונים ---
+            const linkedinUser = d.contact.linkedin.split('/').pop(); // לוקח רק את שם המשתמש מהקישור
+            header.innerHTML = `
                 <h1>${d.fullName}</h1>
                 <div class="contact-info">
-                    <a href="mailto:${d.contact.email}">${d.contact.email}</a> |
-                    <span>${d.contact.phone}</span>
-                    ${d.contact.linkedin ? ` | <a href="${d.contact.linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn</a>` : ''}
+                    <a href="mailto:${d.contact.email}" class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span class="print-only">מייל: </span>
+                        <span>${d.contact.email}</span>
+                    </a>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span class="print-only">טלפון: </span>
+                        <span>${d.contact.phone}</span>
+                    </div>
+                    <a href="${d.contact.linkedin}" target="_blank" rel="noopener noreferrer" class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <span class="print-only">לינקדאין: </span>
+                        <span>${linkedinUser}</span>
+                    </a>
                 </div>`;
             
             document.getElementById('summary').innerHTML += `<p>${d.summary}</p>`;
-            
             const expContainer = document.getElementById('experience');
             d.experience.forEach(j => {
-                expContainer.innerHTML += `
-                    <div class="job">
-                        <div class="dates">${j.dates}</div>
-                        <div class="job-title">${j.title}</div>
-                        <div class="company">${j.company}</div>
-                        <ul>${j.points.map(p => `<li>${p}</li>`).join('')}</ul>
-                    </div>`;
+                expContainer.innerHTML += `<div class="job"><div class="dates">${j.dates}</div><div class="job-title">${j.title}</div><div class="company">${j.company}</div><ul>${j.points.map(p => `<li>${p}</li>`).join('')}</ul></div>`;
             });
-            
             const skillsContainer = document.getElementById('skills');
             d.skills.forEach(s => {
-                 skillsContainer.innerHTML += `
-                    <div class="project">
-                        <div class="project-title">${s.name}</div>
-                        <p>${s.description}</p>
-                    </div>`;
+                 skillsContainer.innerHTML += `<div class="project"><div class="project-title">${s.name}</div><p>${s.description}</p></div>`;
             });
-
             const eduContainer = document.getElementById('education');
             d.education.forEach(e => {
-                eduContainer.innerHTML += `
-                    <div class="education-item">
-                        <div class="degree">${e.degree}</div>
-                        <div class="institution">${e.institution}</div>
-                        <p>${e.details}</p>
-                    </div>`;
+                eduContainer.innerHTML += `<div class="education-item"><div class="degree">${e.degree}</div><div class="institution">${e.institution}</div><p>${e.details}</p></div>`;
             });
-            
             const certContainer = document.getElementById('certifications');
             d.certifications.forEach(c => {
-                 certContainer.innerHTML += `
-                    <div class="certification-item">
-                         <div class="dates">${c.year}</div>
-                        <div class="certification-title">${c.name}</div>
-                        <div class="institution">${c.institution}</div>
-                    </div>`;
+                 certContainer.innerHTML += `<div class="certification-item"><div class="dates">${c.year}</div><div class="certification-title">${c.name}</div><div class="institution">${c.institution}</div></div>`;
             });
-
-             const nsContainer = document.getElementById('national-service');
+            const nsContainer = document.getElementById('national-service');
              d.nationalService.forEach(ns => {
-                 nsContainer.innerHTML += `
-                    <div class="job">
-                         <div class="dates">${ns.dates}</div>
-                        <div class="job-title">${ns.role}</div>
-                        <div class="company">${ns.location}</div>
-                    </div>`;
+                 nsContainer.innerHTML += `<div class="job"><div class="dates">${ns.dates}</div><div class="job-title">${ns.role}</div><div class="company">${ns.location}</div></div>`;
             });
-
             const langContainer = document.getElementById('languages');
             langContainer.innerHTML += `<ul class="languages-list">${d.languages.map(l => `<li><strong>${l.name}:</strong> ${l.level}</li>`).join('')}</ul>`;
         });
