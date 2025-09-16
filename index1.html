@@ -8,7 +8,7 @@
     <meta name="description" content="קורות החיים ותיק העבודות של ליפז נוסן. ניסיון בשירות, תמיכה טכנית וניהול פרויקטים טכנולוגיים.">
     <meta property="og:title" content="קורות חיים | ליפז נוסן">
     <meta property="og:description" content="ניסיון בשירות, תמיכה טכנית וניהול פרויקטים טכנולוגיים.">
-    <meta property="og:image" content="https://via.placeholder.com/300">
+    <meta property="og:image" content="">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     
@@ -59,6 +59,7 @@
             width: 120px; height: 120px;
             border-radius: 50%; object-fit: cover; margin-bottom: 15px;
             border: 3px solid var(--secondary-color);
+            background-color: #eee; /* Placeholder color */
         }
         header h1 { margin: 0; color: var(--primary-color); font-size: 2.5em; }
         .contact-info {
@@ -100,32 +101,16 @@
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
-        .repo-card h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.2em;
-            color: var(--primary-color);
-        }
-        .repo-card h3 a {
-            color: inherit;
-            text-decoration: none;
-        }
-        .repo-card p {
-            font-size: 0.9em;
-            flex-grow: 1; /* Pushes footer down */
-            margin-bottom: 15px;
-        }
+        .repo-card h3 { margin: 0 0 10px 0; font-size: 1.2em; color: var(--primary-color); }
+        .repo-card h3 a { color: inherit; text-decoration: none; }
+        .repo-card p { font-size: 0.9em; flex-grow: 1; margin-bottom: 15px; }
         .repo-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.8em;
-            color: #7f8c8d;
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.8em; color: #7f8c8d;
         }
         .repo-language span {
-            display: inline-block;
-            padding: 3px 8px;
-            background-color: var(--bg-color);
-            border-radius: 12px;
+            display: inline-block; padding: 3px 8px;
+            background-color: var(--bg-color); border-radius: 12px;
         }
         #portfolio-loading { text-align: center; color: #7f8c8d; }
         
@@ -193,8 +178,7 @@
 
     <script>
         const resumeData = {
-            githubUsername: "ModerniMan", // <-- שם המשתמש שלך
-            profilePic: "https://via.placeholder.com/150",
+            githubUsername: "ModerniMan",
             // ... שאר הנתונים ...
             fullName: "ליפז נוסן",
             contact: {
@@ -217,37 +201,36 @@
             languages: [ { name: "עברית", level: "שפת אם" }, { name: "אנגלית", level: "רמה גבוהה" } ]
         };
         
-        async function fetchGitHubProjects(username) {
+        async function fetchGitHubData(username) {
             const portfolioGrid = document.getElementById('portfolio-grid');
             const loadingMsg = document.getElementById('portfolio-loading');
+            const profilePicElement = document.getElementById('profile-pic');
+            const ogImageMeta = document.querySelector('meta[property="og:image"]');
+
             try {
-                // Fetch repos, sorted by last updated, showing up to 6
-                const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=6`);
-                if (!response.ok) {
-                    throw new Error(`GitHub API Error: ${response.status}`);
-                }
-                const repos = await response.json();
+                // Fetch user profile data (for profile picture)
+                const userResponse = await fetch(`https://api.github.com/users/${username}`);
+                if (!userResponse.ok) throw new Error(`GitHub User API Error: ${userResponse.status}`);
+                const userData = await userResponse.json();
                 
-                loadingMsg.style.display = 'none'; // Hide loading message
+                // Update profile picture and social sharing image
+                if (userData.avatar_url) {
+                    profilePicElement.src = userData.avatar_url;
+                    ogImageMeta.content = userData.avatar_url;
+                }
+
+                // Fetch user repositories
+                const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=6`);
+                if (!reposResponse.ok) throw new Error(`GitHub Repos API Error: ${reposResponse.status}`);
+                const repos = await reposResponse.json();
+                
+                loadingMsg.style.display = 'none';
                 
                 repos.forEach(repo => {
-                    // Skip forked repos to show only original work
                     if (repo.fork) return;
-
                     const card = document.createElement('div');
                     card.className = 'repo-card';
-                    card.innerHTML = `
-                        <h3><a href="${repo.html_url}" target="_blank" rel="noopener noreferrer">${repo.name}</a></h3>
-                        <p>${repo.description || 'אין תיאור לפרויקט זה.'}</p>
-                        <div class="repo-footer">
-                            <div class="repo-language">
-                                ${repo.language ? `<span>${repo.language}</span>` : ''}
-                            </div>
-                            <div class="repo-stats">
-                                <i class="fas fa-star"></i> ${repo.stargazers_count}
-                            </div>
-                        </div>
-                    `;
+                    card.innerHTML = `<h3><a href="${repo.html_url}" target="_blank" rel="noopener noreferrer">${repo.name}</a></h3><p>${repo.description || 'אין תיאור לפרויקט זה.'}</p><div class="repo-footer"><div class="repo-language">${repo.language ? `<span>${repo.language}</span>` : ''}</div><div class="repo-stats"><i class="fas fa-star"></i> ${repo.stargazers_count}</div></div>`;
                     portfolioGrid.appendChild(card);
                 });
 
@@ -259,10 +242,10 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             const d = resumeData;
-            // ... (קוד להצגת שאר חלקי קורות החיים נשאר זהה)
-             const header = document.getElementById('main-header');
+            // Build the static parts of the resume
+            const header = document.getElementById('main-header');
             const linkedinUser = d.contact.linkedin.split('/').pop();
-            header.innerHTML = `<img id="profile-pic" src="${d.profilePic}" alt="תמונת פרופיל של ${d.fullName}"><h1>${d.fullName}</h1><div class="contact-info"><a href="mailto:${d.contact.email}" class="contact-item"><i class="fas fa-envelope"></i><span class="print-only">מייל: </span><span>${d.contact.email}</span></a><div class="contact-item"><i class="fas fa-phone"></i><span class="print-only">טלפון: </span><span>${d.contact.phone}</span></div><a href="${d.contact.linkedin}" target="_blank" rel="noopener noreferrer" class="contact-item"><i class="fab fa-linkedin"></i><span class="print-only">לינקדאין: </span><span>${linkedinUser}</span></a></div>`;
+            header.innerHTML = `<img id="profile-pic" alt="תמונת פרופיל של ${d.fullName}"><h1>${d.fullName}</h1><div class="contact-info"><a href="mailto:${d.contact.email}" class="contact-item"><i class="fas fa-envelope"></i><span class="print-only">מייל: </span><span>${d.contact.email}</span></a><div class="contact-item"><i class="fas fa-phone"></i><span class="print-only">טלפון: </span><span>${d.contact.phone}</span></div><a href="${d.contact.linkedin}" target="_blank" rel="noopener noreferrer" class="contact-item"><i class="fab fa-linkedin"></i><span class="print-only">לינקדאין: </span><span>${linkedinUser}</span></a></div>`;
             document.getElementById('summary').innerHTML = `<h2><i class="fas fa-user section-icon"></i>תמצית</h2><p>${d.summary}</p>`;
             document.getElementById('experience').innerHTML = `<h2><i class="fas fa-briefcase section-icon"></i>ניסיון תעסוקתי</h2>` + d.experience.map(j => `<div class="job"><div class="dates">${j.dates}</div><div class="job-title">${j.title}</div><div class="company">${j.company}</div><ul>${(j.points).map(p => `<li>${p}</li>`).join('')}</ul></div>`).join('');
             document.getElementById('skills').innerHTML = `<h2><i class="fas fa-lightbulb section-icon"></i>כישורים ופרויקטים</h2>` + d.skills.map(s => `<div class="project"><div class="project-title">${s.name}</div><p>${s.description}</p></div>`).join('');
@@ -271,8 +254,8 @@
             document.getElementById('national-service').innerHTML = `<h2><i class="fas fa-flag section-icon"></i>שירות לאומי</h2>` + d.nationalService.map(ns => `<div class="job"><div class="dates">${ns.dates}</div><div class="job-title">${ns.role}</div><div class="company">${ns.location}</div></div>`).join('');
             document.getElementById('languages').innerHTML = `<h2><i class="fas fa-language section-icon"></i>שפות</h2><ul class="languages-list">${d.languages.map(l => `<li><strong>${l.name}:</strong> ${l.level}</li>`).join('')}</ul>`;
 
-            // Fetch GitHub projects when the page loads
-            fetchGitHubProjects(d.githubUsername);
+            // Fetch dynamic GitHub data
+            fetchGitHubData(d.githubUsername);
         });
     </script>
 
