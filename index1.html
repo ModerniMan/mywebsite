@@ -22,11 +22,14 @@
         </nav>
         <header id="main-header"></header>
         <section id="summary" class="section"></section>
+        
+        <!-- GitHub Portfolio Section is back! -->
         <section id="github-portfolio" class="section">
              <h2><i class="fab fa-github section-icon"></i>תיק עבודות מ-GitHub</h2>
             <div id="portfolio-grid"></div>
             <p id="portfolio-loading">טוען פרויקטים...</p>
         </section>
+
         <section id="experience" class="section"></section>
         <section id="skills" class="section"></section>
         <section id="education" class="section"></section>
@@ -59,7 +62,10 @@
         };
 
         async function fetchGitHubData(username, profilePicElement, ogImageMeta) {
+            const portfolioGrid = document.getElementById('portfolio-grid');
+            const loadingMsg = document.getElementById('portfolio-loading');
             try {
+                // Fetch user profile
                 const userResponse = await fetch(`https://api.github.com/users/${username}`);
                 if (userResponse.ok) {
                     const userData = await userResponse.json();
@@ -68,21 +74,22 @@
                         if (ogImageMeta) ogImageMeta.setAttribute('content', userData.avatar_url);
                     }
                 }
+
+                // Fetch repos
                 const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=6`);
-                if (reposResponse.ok) {
-                    const repos = await reposResponse.json();
-                    const portfolioGrid = document.getElementById('portfolio-grid');
-                    document.getElementById('portfolio-loading').style.display = 'none';
-                    repos.forEach(repo => {
-                        if (repo.fork) return;
-                        const card = document.createElement('div');
-                        card.className = 'repo-card';
-                        card.innerHTML = `<h3><a href="${repo.html_url}" target="_blank" rel="noopener noreferrer">${repo.name}</a></h3><p>${repo.description || 'אין תיאור לפרויקט זה.'}</p><div class="repo-footer"><div class="repo-language">${repo.language ? `<span>${repo.language}</span>` : ''}</div><div class="repo-stats"><i class="fas fa-star"></i> ${repo.stargazers_count}</div></div>`;
-                        portfolioGrid.appendChild(card);
-                    });
-                } else { throw new Error('Failed to fetch repos'); }
+                if (!reposResponse.ok) throw new Error('Failed to fetch repos');
+                const repos = await reposResponse.json();
+                
+                loadingMsg.style.display = 'none';
+                repos.forEach(repo => {
+                    if (repo.fork) return;
+                    const card = document.createElement('div');
+                    card.className = 'repo-card';
+                    card.innerHTML = `<h3><a href="${repo.html_url}" target="_blank" rel="noopener noreferrer">${repo.name}</a></h3><p>${repo.description || 'אין תיאור לפרויקט זה.'}</p><div class="repo-footer"><div class="repo-language">${repo.language ? `<span>${repo.language}</span>` : ''}</div><div class="repo-stats"><i class="fas fa-star"></i> ${repo.stargazers_count}</div></div>`;
+                    portfolioGrid.appendChild(card);
+                });
             } catch (error) {
-                document.getElementById('portfolio-loading').innerText = "לא ניתן היה לטעון את הפרויקטים מ-GitHub.";
+                loadingMsg.innerText = "לא ניתן היה לטעון את הפרויקטים מ-GitHub.";
                 console.error(error);
             }
         }
