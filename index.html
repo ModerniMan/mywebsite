@@ -15,6 +15,7 @@
         :root {
             --primary-color: #0A66C2;
             --whatsapp-color: #25D366;
+            --telegram-color: #0088cc;
             --background-color: #f0f2f5;
             --card-background: #ffffff;
             --text-color: #1c1e21;
@@ -97,6 +98,8 @@
         .link-button.linkedin i { color: #0A66C2; }
         .link-button.whatsapp { background-color: #e9f8ee; }
         .link-button.whatsapp i { color: #25D366; }
+        .link-button.telegram { background-color: #eaf5fb; }
+        .link-button.telegram i { color: var(--telegram-color); }
         .cta-button {
             display: inline-block;
             background-color: var(--primary-color);
@@ -130,6 +133,7 @@
             <a href="" target="_blank" class="link-button whatsapp" id="whatsapp-link"><i class="fab fa-whatsapp"></i></a>
             <a href="" target="_blank" class="link-button github" id="github-link"><i class="fab fa-github"></i></a>
             <a href="" class="link-button email" id="email-link"><i class="far fa-envelope"></i></a>
+            <a href="" target="_blank" class="link-button telegram" id="telegram-link"><i class="fab fa-telegram-plane"></i></a>
         </div>
         <a href="index1.html" class="cta-button">צפה בקורות החיים המלאים</a>
     </div>
@@ -142,7 +146,8 @@
                 email: "lipaz@moderniman.co.il",
                 phone: "053-2191924",
                 linkedin: "https://www.linkedin.com/in/lipaznussen",
-                githubUser: "ModerniMan" 
+                githubUser: "ModerniMan",
+                telegram: "https://t.me/ModerniMan_bot"
             }
         };
 
@@ -158,6 +163,7 @@
             document.getElementById('whatsapp-link').href = `https://wa.me/972${data.phone.replace(/-/g, '').substring(1)}`;
             document.getElementById('github-link').href = `https://github.com/${githubUser}`;
             document.getElementById('email-link').href = `mailto:${data.email}`;
+            document.getElementById('telegram-link').href = data.telegram;
 
             const profilePicElement = document.getElementById('profile-pic');
             const ogImageMeta = document.querySelector('meta[property="og:image"]');
