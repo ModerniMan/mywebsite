@@ -3,122 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ליפז נוסן - ModerniMan</title>
-    <meta name="description" content="כרטיס הביקור הדיגיטלי של ליפז נוסן.">
-    <meta property="og:title" content="ליפז נוסן - ModerniMan">
+
+    <!-- SEO Meta Tags -->
+    <title>ליפז נוסן (ModerniMan) - יזם ואיש דיגיטל</title>
+    <meta name="description" content="כרטיס הביקור הדיגיטלי של ליפז נוסן. יצירת קשר, קישורים לרשתות החברתיות, ומידע מקצועי על פתרונות טכנולוגיים ושירות לקוחות.">
+    <meta property="og:title" content="ליפז נוסן (ModerniMan) - כרטיס ביקור דיגיטלי">
+    <meta property="og:description" content="יצירת קשר וקישורים מקצועיים.">
     <meta property="og:image" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://moderniman.co.il">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
-        :root {
-            --primary-color: #0A66C2;
-            --whatsapp-color: #25D366;
-            --telegram-color: #0088cc;
-            --background-color: #f0f2f5;
-            --card-background: #ffffff;
-            --text-color: #1c1e21;
-            --subtle-text-color: #606770;
-            --shadow-color: rgba(0, 0, 0, 0.1);
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Assistant', sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-        .container {
-            max-width: 400px;
-            width: 100%;
-            background-color: var(--card-background);
-            border-radius: 24px;
-            box-shadow: 0 8px 32px var(--shadow-color);
-            padding: 40px;
-            padding-top: 80px;
-            text-align: center;
-            position: relative;
-        }
-        .profile-pic-container {
-            position: absolute;
-            top: -60px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 120px;
-        }
-        .profile-pic {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            border: 4px solid var(--card-background);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-            object-fit: cover;
-            background-color: #eee;
-        }
-        h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-        .tagline {
-            font-size: 1.1rem;
-            font-weight: 400;
-            color: var(--subtle-text-color);
-            margin-bottom: 24px;
-        }
-        .links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-        .link-button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 50px;
-            height: 50px;
-            background-color: #f0f2f5;
-            border-radius: 12px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .link-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-        }
-        .link-button i { font-size: 24px; color: var(--text-color); }
-        .link-button.linkedin { background-color: #eaf2f8; }
-        .link-button.linkedin i { color: #0A66C2; }
-        .link-button.whatsapp { background-color: #e9f8ee; }
-        .link-button.whatsapp i { color: #25D366; }
-        .link-button.telegram { background-color: #eaf5fb; }
-        .link-button.telegram i { color: var(--telegram-color); }
-        .cta-button {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 14px 28px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-        }
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(10, 102, 194, 0.3);
-        }
-        @media (max-width: 600px) {
-            .container { padding: 20px; padding-top: 70px; }
-            h1 { font-size: 1.8rem; }
-        }
+        :root{--primary-color:#0A66C2;--whatsapp-color:#25D366;--background-color:#f0f2f5;--card-background:#ffffff;--text-color:#1c1e21;--subtle-text-color:#606770;--shadow-color:rgba(0,0,0,0.1)}*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Assistant',sans-serif;background-color:var(--background-color);color:var(--text-color);display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px}.container{max-width:400px;width:100%;background-color:var(--card-background);border-radius:24px;box-shadow:0 8px 32px var(--shadow-color);padding:40px;padding-top:80px;text-align:center;position:relative}.profile-pic-container{position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:120px;height:120px}.profile-pic{width:100%;height:100%;border-radius:50%;border:4px solid var(--card-background);box-shadow:0 4px 15px rgba(0,0,0,0.15);object-fit:cover;background-color:#eee}h1{font-size:2rem;font-weight:700;margin-bottom:8px}.tagline{font-size:1.1rem;font-weight:400;color:var(--subtle-text-color);margin-bottom:24px}.links{display:flex;justify-content:center;gap:20px;margin-bottom:30px}.link-button{display:flex;justify-content:center;align-items:center;width:50px;height:50px;background-color:#f0f2f5;border-radius:12px;text-decoration:none;transition:all .3s ease}.link-button:hover{transform:translateY(-5px);box-shadow:0 6px 20px rgba(0,0,0,.1)}.link-button i{font-size:24px;color:var(--text-color)}.link-button.linkedin{background-color:#eaf2f8}.link-button.linkedin i{color:#0A66C2}.link-button.whatsapp{background-color:#e9f8ee}.link-button.whatsapp i{color:#25D366}.cta-button{display:inline-block;background-color:var(--primary-color);color:#fff;padding:14px 28px;border-radius:12px;text-decoration:none;font-weight:600;font-size:1.1rem;transition:all .3s ease}.cta-button:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(10,102,194,.3)}
     </style>
 </head>
 <body>
@@ -126,58 +26,51 @@
         <div class="profile-pic-container">
             <img src="" alt="תמונת פרופיל של ליפז נוסן" id="profile-pic" class="profile-pic">
         </div>
-        <h1 id="fullName"></h1>
-        <p id="tagline" class="tagline"></p>
+        <h1></h1>
+        <p class="tagline"></p>
         <div class="links">
-            <a href="" target="_blank" class="link-button linkedin" id="linkedin-link"><i class="fab fa-linkedin-in"></i></a>
-            <a href="" target="_blank" class="link-button whatsapp" id="whatsapp-link"><i class="fab fa-whatsapp"></i></a>
-            <a href="" target="_blank" class="link-button github" id="github-link"><i class="fab fa-github"></i></a>
-            <a href="" class="link-button email" id="email-link"><i class="far fa-envelope"></i></a>
-            <a href="" target="_blank" class="link-button telegram" id="telegram-link"><i class="fab fa-telegram-plane"></i></a>
+            <a href="" target="_blank" class="link-button linkedin"><i class="fab fa-linkedin-in"></i></a>
+            <a href="" target="_blank" class="link-button whatsapp"><i class="fab fa-whatsapp"></i></a>
+            <a href="" target="_blank" class="link-button github"><i class="fab fa-github"></i></a>
+            <a href="" class="link-button email"><i class="far fa-envelope"></i></a>
         </div>
         <a href="index1.html" class="cta-button">צפה בקורות החיים המלאים</a>
     </div>
-    
+
     <script>
-        const siteData = {
-            personal: {
-                fullName: "ליפז נוסן",
-                tagline: "יזם ואיש דיגיטל | פתרונות טכנולוגיים",
-                email: "lipaz@moderniman.co.il",
-                phone: "053-2191924",
-                linkedin: "https://www.linkedin.com/in/lipaznussen",
-                githubUser: "ModerniMan",
-                telegram: "https://t.me/ModerniMan_bot"
-            }
+        const data = {
+            fullName: "ליפז נוסן",
+            tagline: "יזם ואיש דיגיטל | פתרונות טכנולוגיים",
+            email: "lipaz@moderniman.co.il",
+            phone: "053-2191924",
+            linkedin: "https://www.linkedin.com/in/lipaznussen",
+            githubUser: "ModerniMan"
         };
 
         document.addEventListener('DOMContentLoaded', async () => {
-            const data = siteData.personal;
-            const githubUser = data.githubUser;
+            document.querySelector('h1').textContent = data.fullName;
+            document.querySelector('.tagline').textContent = data.tagline;
+            document.querySelector('.link-button.linkedin').href = data.linkedin;
+            document.querySelector('.link-button.whatsapp').href = `https://wa.me/972${data.phone.replace(/-/g, '').substring(1)}`;
+            document.querySelector('.link-button.github').href = `https://github.com/${data.githubUser}`;
+            document.querySelector('.link-button.email').href = `mailto:${data.email}`;
             
-            document.title = `${data.fullName} - ModerniMan`;
-            document.getElementById('fullName').textContent = data.fullName;
-            document.getElementById('tagline').textContent = data.tagline;
-            
-            document.getElementById('linkedin-link').href = data.linkedin;
-            document.getElementById('whatsapp-link').href = `https://wa.me/972${data.phone.replace(/-/g, '').substring(1)}`;
-            document.getElementById('github-link').href = `https://github.com/${githubUser}`;
-            document.getElementById('email-link').href = `mailto:${data.email}`;
-            document.getElementById('telegram-link').href = data.telegram;
-
             const profilePicElement = document.getElementById('profile-pic');
             const ogImageMeta = document.querySelector('meta[property="og:image"]');
-            if(githubUser) {
+            
+            if (data.githubUser) {
                 try {
-                    const response = await fetch(`https://api.github.com/users/${githubUser}`);
+                    const response = await fetch(`https://api.github.com/users/${data.githubUser}`);
                     if (response.ok) {
                         const userData = await response.json();
                         if (userData.avatar_url) {
                             profilePicElement.src = userData.avatar_url;
-                            if(ogImageMeta) ogImageMeta.setAttribute('content', userData.avatar_url);
+                            ogImageMeta.content = userData.avatar_url;
                         }
                     }
-                } catch (error) { console.error("Could not fetch GitHub profile picture:", error); }
+                } catch (error) {
+                    console.error("Could not fetch GitHub profile picture:", error);
+                }
             }
         });
     </script>
