@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מחולל ידידים - קריות (מערכת משולבת)</title>
+    <title>מחולל ידידים - סניף קריות</title>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap"
         rel="stylesheet">
@@ -808,6 +808,13 @@
                 <textarea id="in-list-stats" class="smart-paste-area" oninput="renderStats()"
                     placeholder="הדבק שמות ומספרים..."></textarea>
             </div>
+
+            <div class="input-group" style="margin-top: 10px;">
+                <label>בחירת מצטיין ידנית (הקלד שם)</label>
+                <input type="text" id="in-star-select" list="star-options" oninput="renderStats(true)"
+                    placeholder="התחל להקליד...">
+                <datalist id="star-options"></datalist>
+            </div>
         </div>
 
         <!-- WELCOME INPUTS -->
@@ -1009,7 +1016,18 @@
             return result.sort((a, b) => b.score - a.score);
         }
 
-        function renderStats() {
+        function updateStarSelect(list) {
+            const datalist = document.getElementById('star-options');
+            datalist.innerHTML = '';
+
+            list.forEach(p => {
+                let opt = document.createElement('option');
+                opt.value = p.name;
+                datalist.appendChild(opt);
+            });
+        }
+
+        function renderStats(triggeredBySelect = false) {
             // Stats
             const total = document.getElementById('in-total').value || 0;
             const vols = document.getElementById('in-vols').value || 0;
@@ -1050,9 +1068,27 @@
             updateCol('fuel', fuel); updateCol('door', door); updateCol('transport', trans);
             updateCol('war', war); updateCol('other', other);
 
-            // Podium
+            // Podium Logic
             const rawText = document.getElementById('in-list-stats').value;
             let list = parseNames(rawText);
+
+            // Populate Dropdown (only if not triggered BY the select itself to avoid jumpiness, though simplistic here)
+            if (!triggeredBySelect) {
+                updateStarSelect(list, document.getElementById('in-star-select').value);
+            }
+
+            // Check override
+            const overrideName = document.getElementById('in-star-select').value;
+
+            if (overrideName) {
+                // Find and move to top
+                const idx = list.findIndex(x => x.name === overrideName);
+                if (idx > -1) {
+                    const person = list.splice(idx, 1)[0];
+                    list.unshift(person); // Move to front
+                }
+            }
+
             if (list.length === 0) list = Array(3).fill({ name: '-', score: 0 });
 
             const top1 = list[0] || { name: '-', score: 0 };
