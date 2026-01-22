@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מחולל ידידים - סניף קריות</title>
+    <title>מחולל ידידים - קריות (מערכת משולבת)</title>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap"
         rel="stylesheet">
@@ -760,7 +760,7 @@
 <body>
 
     <div class="sidebar">
-        <h2>ידידים - סניף קריות</h2>
+        <h2>ידידים - מערכת משולבת</h2>
 
         <div class="tabs">
             <button class="tab-btn active" onclick="switchTab('stats')">📊 דוח שבועי</button>
@@ -1072,9 +1072,9 @@
             const rawText = document.getElementById('in-list-stats').value;
             let list = parseNames(rawText);
 
-            // Populate Dropdown (only if not triggered BY the select itself to avoid jumpiness, though simplistic here)
+            // Populate Datalist
             if (!triggeredBySelect) {
-                updateStarSelect(list, document.getElementById('in-star-select').value);
+                updateStarSelect(list);
             }
 
             // Check override
