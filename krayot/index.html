@@ -651,98 +651,154 @@
         }
 
         /* --- Welcome Specific Styles --- */
+        .w-card-header {
+            border-radius: 12px 12px 0 0;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* BLUE / FAMILY CARD */
+        .header-blue {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            color: #1565c0;
+            border-bottom: 4px solid #42a5f5;
+        }
+
+        .header-blue h1 {
+            font-size: 36px;
+            font-weight: 900;
+            margin: 0;
+            line-height: 1;
+            text-shadow: 1px 1px 0px #fff;
+        }
+
+        .header-blue h2 {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 5px 0 0 0;
+            color: #1976d2;
+        }
+
+        /* RED / OPERATIONAL CARD */
+        .header-red {
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            color: #c62828;
+            border-bottom: 4px solid #ef5350;
+            padding: 15px;
+        }
+
+        .header-red .alert-badge {
+            background: #d32f2f;
+            color: #fff;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .header-red h1 {
+            font-size: 28px;
+            font-weight: 800;
+            margin: 5px 0 0 0;
+        }
+
         .welcome-content {
-            padding: 30px;
+            padding: 20px;
             flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
-            background: radial-gradient(circle at center, #ffffff 0%, #f5f7fa 100%);
-            border-radius: 0 0 8px 8px;
-        }
-
-        .welcome-title {
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--c-blue-dark);
-            margin-bottom: 20px;
-            text-align: center;
-            border-bottom: 3px solid var(--c-gold);
-            padding-bottom: 5px;
-            display: inline-block;
-        }
-
-        .volunteers-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            width: 100%;
-            margin-bottom: 30px;
-        }
-
-        .v-item {
             background: #fff;
-            padding: 12px 15px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            border-right: 4px solid var(--c-blue-dark);
-            font-size: 18px;
-            font-weight: 700;
-            color: #333;
+            position: relative;
+        }
+
+        .names-grid {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: transform 0.2s;
-        }
-
-        .v-item:hover {
-            transform: scale(1.02);
-        }
-
-        .footer-rules {
-            margin-top: auto;
-            background: #ffebee;
-            border: 1px dashed var(--c-warning);
-            padding: 15px;
-            border-radius: 8px;
-            width: 100%;
-            box-sizing: border-box;
-            text-align: center;
-        }
-
-        .rule-item {
-            font-size: 14px;
-            color: #c62828;
-            margin: 4px 0;
-            font-weight: 600;
-        }
-
-        .rule-bold {
-            font-weight: 800;
-            font-size: 15px;
-        }
-
-        /* Utils */
-        .hidden {
-            display: none !important;
-        }
-
-        .card-footer {
-            margin-top: auto;
-            text-align: center;
-            font-size: 12px;
-            font-weight: 600;
-            color: #b0bec5;
-            padding-top: 10px;
-        }
-
-        .w-header-bg {
-            /* Override header height for welcome card */
-            height: 120px;
-            display: flex;
-            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
             justify-content: center;
             width: 100%;
+            margin: 20px 0;
+        }
+
+        .name-tag {
+            background: #f5f5f5;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #37474f;
+            border-right: 3px solid #cfd8dc;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Specific borders for types */
+        .card-blue .name-tag {
+            border-color: #2196f3;
+            background: #e3f2fd;
+            color: #0d47a1;
+        }
+
+        .card-red .name-tag {
+            border-color: #f44336;
+            background: #ffebee;
+            color: #b71c1c;
+        }
+
+        .footer-msg {
+            margin-top: auto;
+            width: 100%;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .footer-blue {
+            background: #e3f2fd;
+            color: #1565c0;
+            border: 1px dashed #42a5f5;
+        }
+
+        .footer-red {
+            background: #ffebee;
+            color: #b71c1c;
+            border: 1px dashed #ef5350;
+        }
+
+        .cards-wrapper {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .welcome-card-base {
+            width: 400px;
+            /* Specific width */
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 400px;
         }
 
         [contenteditable]:hover {
@@ -819,27 +875,23 @@
 
         <!-- WELCOME INPUTS -->
         <div id="inputs-welcome" class="hidden">
-            <div class="section-label">כותרות</div>
-            <input type="text" id="in-w-org" value="ידידים סיוע בדרכים" oninput="renderWelcome()">
-            <input type="text" id="in-w-district" value="מחוז צפון - סניף קריות" oninput="renderWelcome()">
-            <input type="text" id="in-w-sub" value="ברוכים הבאים לפורום הסניף:" oninput="renderWelcome()"
-                placeholder="כותרת משנה...">
+            <div class="section-label">שמות מתנדבים</div>
+            <textarea id="in-w-names" oninput="renderWelcome()" placeholder="הכנס שמות (כל שם בשורה)"></textarea>
 
-            <div class="section-label">שמות מתנדבים (חדשים)</div>
-            <textarea id="in-w-names" oninput="renderWelcome()" placeholder="הכנס שמות..."></textarea>
-
-            <div class="section-label">הודעה ראשית</div>
-            <input type="text" id="in-w-msg" value="❤️ברוכים הבאים❤️" oninput="renderWelcome()">
-
-            <div class="section-label">כללים</div>
-            <textarea id="in-w-rules" oninput="renderWelcome()" style="height:150px;">קבוצה זו היא *קבוצת הפורום* של *אלופי קריות* הגיבורים 
-
-הקבוצה פעילה *ששה ימים בשבוע כולל בלילה*.
-
-ניתן לשתף, להתייעץ, לצחוק והכי חשוב , להיות מאוחדים ,  ביחד💪🏼</textarea>
+            <div class="section-label">הגדרות מתקדמות (אופציונלי)</div>
+            <div style="font-size:12px; color:#aaa; margin-bottom:5px;">לחץ על הטקסטים בתצוגה המקדימה כדי לערוך אותם
+                ישירות</div>
         </div>
 
-        <button class="download-btn" onclick="downloadImage()">שמור תמונה להפצה 📥</button>
+        <div id="btn-group-welcome" class="hidden" style="margin-top:auto;">
+            <button class="download-btn" onclick="downloadWelcome('family')"
+                style="margin-bottom:10px; background:linear-gradient(135deg, #42a5f5, #1565c0);">שמור משפחתית (כחול)
+                📥</button>
+            <button class="download-btn" onclick="downloadWelcome('operational')"
+                style="background:linear-gradient(135deg, #ef5350, #c62828);">שמור מבצעית (אדום) �</button>
+        </div>
+
+        <button id="btn-stat-down" class="download-btn" onclick="downloadImage()">שמור תמונה להפצה 📥</button>
     </div>
 
     <div class="preview-area">
@@ -951,30 +1003,47 @@
             </div>
 
             <!-- CARD 2: WELCOME -->
-            <div id="card-welcome" class="main-card">
-                <div class="header-section w-header-bg">
-                    <div class="header-content">
-                        <h1 id="out-w-org" contenteditable="true">ידידים סיוע בדרכים</h1>
-                        <h2 id="out-w-district" contenteditable="true">מחוז צפון - סניף קריות</h2>
-                        <h3 id="out-w-sub" contenteditable="true"
-                            style="margin:5px 0 0 0; font-size:16px; font-weight:600; color:#bbdefb;">ברוכים הבאים
-                            לפורום הסניף:</h3>
+            <!-- WELCOME CONTAINER (Holds 2 Cards) -->
+            <div id="card-welcome" class="cards-wrapper" style="display:none;">
+
+                <!-- 1. Family Card (Blue) -->
+                <div id="card-welcome-family" class="welcome-card-base card-blue">
+                    <div class="w-card-header header-blue">
+                        <h1 contenteditable="true">ברוכים הבאים!</h1>
+                        <h2 contenteditable="true">לפורום הסניף - אלופי הקריות</h2>
+                    </div>
+                    <div class="welcome-content">
+                        <div class="names-grid" id="w-list-family">
+                            <!-- JS Injected -->
+                        </div>
+
+                        <div class="footer-msg footer-blue" contenteditable="true">
+                            לשתף, להתייעץ, לצחוק ולהיות מאוחדים ❤️<br>
+                            סניף קריות - משפחה אחת גדולה!
+                        </div>
                     </div>
                 </div>
 
-                <div class="welcome-content">
-                    <div class="welcome-title" id="out-w-msg" contenteditable="true">❤️ברוכים הבאים❤️</div>
-                    <div class="volunteers-list" id="w-list-container">
-                        <!-- JS Injected -->
+                <!-- 2. Operational Card (Red) -->
+                <div id="card-welcome-operational" class="welcome-card-base card-red">
+                    <div class="w-card-header header-red">
+                        <div class="alert-badge">⚠️ קבוצה זו היא מבצעית בלבד!</div>
+                        <h1 contenteditable="true">ברוכים הבאים!</h1>
+                        <h2 contenteditable="true">לקבוצה המבצעית של אלופי הקריות</h2>
                     </div>
-                    <div class="footer-rules" id="w-rules-container">
-                        <!-- JS Injected -->
+                    <div class="welcome-content">
+                        <div class="names-grid" id="w-list-operational">
+                            <!-- JS Injected -->
+                        </div>
+
+                        <div class="footer-msg footer-red" contenteditable="true">
+                            הקבוצה פעילה 6 ימים בשבוע<br>
+                            אינה פעילה בשבת ומועדי ישראל ⛔<br>
+                            אין להגיב להודעות בקבוצה זו
+                        </div>
                     </div>
                 </div>
 
-                <div
-                    style="height:12px; background: linear-gradient(to right, var(--c-blue-dark), var(--c-blue-light)); width:100%; border-radius: 0 0 8px 8px;">
-                </div>
             </div>
 
         </div>
@@ -986,19 +1055,34 @@
         function switchTab(tab) {
             currentTab = tab;
 
-            // Buttons
+            // Buttons Active State
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            event.target.classList.add('active');
+            // Use currentTarget if available, or find button by simple logic if needed
+            // (Simpler: just highlight based on tab name if event is tricky)
+            // But event.target usually works for inline onclick. 
+            // Let's manually set active based on tab to be safe.
+            const btns = document.querySelectorAll('.tab-btn');
+            if (tab === 'stats') btns[0].classList.add('active');
+            if (tab === 'welcome') btns[1].classList.add('active');
 
-            // Inputs
-            document.getElementById('inputs-stats').classList.add('hidden');
-            document.getElementById('inputs-welcome').classList.add('hidden');
-            document.getElementById('inputs-' + tab).classList.remove('hidden');
-
-            // Cards
+            // Hide EVERYTHING first (Hard Reset)
+            document.getElementById('inputs-stats').style.display = 'none';
+            document.getElementById('inputs-welcome').style.display = 'none';
+            document.getElementById('btn-stat-down').style.display = 'none';
+            document.getElementById('btn-group-welcome').style.display = 'none';
             document.getElementById('card-stats').style.display = 'none';
             document.getElementById('card-welcome').style.display = 'none';
-            document.getElementById('card-' + tab).style.display = 'flex';
+
+            // Show RELEVANT parts
+            if (tab === 'stats') {
+                document.getElementById('inputs-stats').style.display = 'block';
+                document.getElementById('btn-stat-down').style.display = 'inline-block';
+                document.getElementById('card-stats').style.display = 'flex';
+            } else if (tab === 'welcome') {
+                document.getElementById('inputs-welcome').style.display = 'block';
+                document.getElementById('btn-group-welcome').style.display = 'block';
+                document.getElementById('card-welcome').style.display = 'flex';
+            }
         }
 
         // --- STATS LOGIC ---
@@ -1130,40 +1214,45 @@
 
         // --- WELCOME LOGIC ---
         function renderWelcome() {
-            document.getElementById('out-w-org').innerText = document.getElementById('in-w-org').value;
-            document.getElementById('out-w-district').innerText = document.getElementById('in-w-district').value;
-            document.getElementById('out-w-sub').innerText = document.getElementById('in-w-sub').value;
-            document.getElementById('out-w-msg').innerText = document.getElementById('in-w-msg').value;
-
             const namesText = document.getElementById('in-w-names').value;
             const names = namesText.split('\n').filter(n => n.trim() !== '');
-            const listContainer = document.getElementById('w-list-container');
-            listContainer.innerHTML = '';
+
+            const listFamily = document.getElementById('w-list-family');
+            const listOperational = document.getElementById('w-list-operational');
+
+            if (listFamily) listFamily.innerHTML = '';
+            if (listOperational) listOperational.innerHTML = '';
 
             names.forEach(name => {
                 let cleanName = name.replace(/\*/g, '').trim();
-                let div = document.createElement('div');
-                div.className = 'v-item';
-                div.innerHTML = `<span class="v-icon">👤</span> <div><strong>${cleanName}</strong></div>`;
-                listContainer.appendChild(div);
-            });
 
-            const rulesText = document.getElementById('in-w-rules').value;
-            const rulesContainer = document.getElementById('w-rules-container');
-            rulesContainer.innerHTML = '';
-
-            rulesText.split('\n').forEach(line => {
-                if (!line.trim()) return;
-                let div = document.createElement('div');
-                div.className = 'rule-item';
-                let content = line.replace(/\*(.*?)\*/g, '<span class="rule-bold">$1</span>');
-                div.innerHTML = content;
-                if (line.includes('שבת')) {
-                    div.style.color = '#b71c1c'; div.style.fontWeight = '800';
-                    div.style.fontSize = '16px'; div.style.marginTop = '10px';
-                    div.style.borderTop = '1px solid #ffccbc'; div.style.paddingTop = '5px';
+                // Add to Family
+                if (listFamily) {
+                    let divF = document.createElement('div');
+                    divF.className = 'name-tag';
+                    divF.innerHTML = `👋 ${cleanName}`;
+                    listFamily.appendChild(divF);
                 }
-                rulesContainer.appendChild(div);
+
+                // Add to Operational
+                if (listOperational) {
+                    let divO = document.createElement('div');
+                    divO.className = 'name-tag';
+                    divO.innerHTML = `🛑 ${cleanName}`;
+                    listOperational.appendChild(divO);
+                }
+            });
+        }
+
+        function downloadWelcome(type) {
+            let targetId = (type === 'family') ? 'card-welcome-family' : 'card-welcome-operational';
+            const element = document.getElementById(targetId);
+
+            html2canvas(element, { scale: 2, useCORS: true, backgroundColor: null }).then(canvas => {
+                let link = document.createElement("a");
+                link.download = "yedidim_" + type + ".png";
+                link.href = canvas.toDataURL("image/png");
+                link.click();
             });
         }
 
