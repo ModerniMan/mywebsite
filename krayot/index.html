@@ -2,20 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
     <title>My Website</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .card { border: 1px solid #ccc; border-radius: 5px; margin: 10px; padding: 10px; }
+        .welcome { background-color: #f9f9f9; text-align: center; }
+        .statistics { color: blue; }
+    </style>
 </head>
 <body>
-    <div class="certificate">
-        <div class="cert-mask" style="top: 35%;">
-            <h1>Certificate of Completion</h1>
-            <p>This certifies that</p>
-            <h2>[Name]</h2>
-            <p>has completed the course</p>
-        </div>
+    <div class="welcome card">
+        <h1>Welcome to My Website!</h1>
+        <p>Your journey starts here.</p>
     </div>
-    <script src="script.js"></script>
+    <div class="statistics card">
+        <h2>Statistics</h2>
+        <p id="stats">Loading...</p>
+    </div>
+    <div class="certificate card">
+        <h2>Certificate Generator</h2>
+        <button onclick="generateCertificate()">Generate Certificate</button>
+        <p id="certificate">Certificate will appear here.</p>
+    </div>
+    <script>
+        function generateCertificate() {
+            document.getElementById('certificate').innerText = 'Your certificate has been generated!';
+        }
+
+        // Simulate fetching statistics.
+        setTimeout(() => {
+            document.getElementById('stats').innerText = 'Visitors: 1000, Certificates issued: 250';
+        }, 2000);
+    </script>
 </body>
 </html>
