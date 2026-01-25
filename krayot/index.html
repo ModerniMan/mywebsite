@@ -3,25 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Title Here</title>
-    <link rel="stylesheet" href="style.css">
+    <title>My Website</title>
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Website</h1>
-    </header>
-    <main>
-        <section>
-            <h2>About Us</h2>
-            <p>This is an example paragraph about us.</p>
-        </section>
-        <section>
-            <h2>Services</h2>
-            <p>Details about services offered.</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 My Website. All rights reserved.</p>
-    </footer>
+    <div class="graph-container">
+        <!-- Graphs rendering logic here -->
+        <script>
+            function renderStats(vals) {
+                const max = Math.max(...vals);
+                const columns = document.querySelectorAll('.graph-column');
+                vals.forEach((val, index) => {
+                    const col = columns[index];
+                    const bar = col.querySelector('.bar');
+                    const txt = col.querySelector('.value-text');
+                    col.style.display = 'flex'; // Always show
+                    if (val > 0) {
+                        bar.style.height = (val / max * 100) + "%";
+                        if (txt) txt.innerText = val;
+                    } else {
+                        bar.style.height = "4px"; // Minimum visible height
+                        if (txt) txt.innerText = "0";
+                    }
+                });
+                const totalEvents = vals.reduce((sum, v) => sum + v, 0);
+                const totalEl = document.getElementById('total-events');
+                if (totalEl) totalEl.innerText = totalEvents;
+            }
+        </script>
+    </div>
+    <div id="stats-summary" style="text-align:center; padding:10px; background:#e3f2fd; border-radius:8px; margin-top:15px;">
+        <strong>סה"כ אירועים מפולגים:</strong> <span id="total-events">0</span>
+    </div>
 </body>
 </html>
