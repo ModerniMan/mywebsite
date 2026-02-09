@@ -46,6 +46,13 @@ body {
   color: var(--text-primary);
   line-height: 1.7;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 body[dir="rtl"] {
@@ -253,6 +260,14 @@ body[dir="rtl"] {
   width: 100%;
 }
 
+.hero-content-rtl {
+  flex-direction: row-reverse;
+}
+
+.hero-content-ltr {
+  flex-direction: row;
+}
+
 .hero-text {
   flex: 1;
 }
@@ -397,15 +412,22 @@ body[dir="rtl"] {
 }
 
 @media (max-width: 768px) {
-  .hero-content {
-    flex-direction: column-reverse;
+  .hero-content,
+  .hero-content-rtl,
+  .hero-content-ltr {
+    flex-direction: column-reverse !important;
     text-align: center;
+    gap: 40px;
   }
-  .hero-name { font-size: 2.5rem; }
-  .hero-subtitle { margin: 0 auto 32px auto; }
+  .hero-name { font-size: 2.2rem; }
+  .hero-title { font-size: 1.1rem; }
+  .hero-subtitle {
+    margin: 0 auto 32px auto;
+    font-size: 0.9rem;
+  }
   .hero-buttons { justify-content: center; }
   .hero-socials { justify-content: center; }
-  .hero-image { width: 200px; height: 200px; }
+  .hero-image { width: 180px; height: 180px; }
 }
 
 /* === PROJECTS === */
@@ -830,55 +852,129 @@ body[dir="ltr"] .timeline-dot { left: -6px; }
 
 /* === MOBILE IMPROVEMENTS === */
 @media (max-width: 768px) {
+  :root {
+    --section-padding: var(--section-padding-mobile);
+  }
+
   .section {
-    padding: var(--section-padding-mobile);
+    padding: 50px 0;
   }
 
   .container {
-    padding: 0 20px;
+    padding: 0 16px;
+    max-width: 100%;
   }
 
   .section-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-bottom: 8px;
+    line-height: 1.3;
   }
 
   .section-subtitle {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 
   .section-header {
-    margin-bottom: 40px;
+    margin-bottom: 36px;
   }
 
   .btn-primary,
   .btn-secondary {
-    padding: 10px 24px;
-    font-size: 0.9rem;
+    padding: 11px 22px;
+    font-size: 0.88rem;
+    white-space: nowrap;
   }
 
   .project-card {
-    padding: 24px;
+    padding: 20px;
+  }
+
+  .project-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 1.2rem;
+    margin-bottom: 14px;
   }
 
   .project-title {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
   }
 
   .project-desc {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
+    line-height: 1.6;
+  }
+
+  .project-tag {
+    font-size: 0.7rem;
+    padding: 3px 8px;
   }
 
   .team-card {
     width: 100%;
-    max-width: 320px;
+    max-width: 100%;
+    padding: 28px 20px;
+  }
+
+  .team-avatar {
+    width: 90px;
+    height: 90px;
   }
 
   .skill-category {
     padding: 20px;
   }
 
+  .skill-category-name {
+    font-size: 1rem;
+  }
+
+  .skill-item {
+    font-size: 0.8rem;
+    padding: 5px 12px;
+  }
+
   .contact-card {
-    padding: 24px;
+    padding: 24px 20px;
+  }
+
+  .contact-icon {
+    font-size: 1.6rem;
+  }
+
+  .timeline-item {
+    padding-bottom: 32px;
+  }
+
+  .timeline-year {
+    font-size: 0.75rem;
+  }
+
+  .timeline-role {
+    font-size: 1rem;
+  }
+
+  .timeline-company {
+    font-size: 0.85rem;
+  }
+
+  .timeline-desc {
+    font-size: 0.8rem;
+  }
+
+  /* Navbar mobile fix */
+  .nav-logo {
+    font-size: 1.2rem;
+  }
+
+  /* Prevent horizontal scroll */
+  * {
+    max-width: 100%;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
   }
 }

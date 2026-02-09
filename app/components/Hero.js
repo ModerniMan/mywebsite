@@ -12,11 +12,10 @@ export default function Hero() {
     <section className="hero" id="hero">
       <div className="container">
         <motion.div
-          className="hero-content"
+          className={`hero-content ${dir === 'rtl' ? 'hero-content-rtl' : 'hero-content-ltr'}`}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
-          style={{ flexDirection: dir === 'rtl' ? 'row-reverse' : 'row' }}
         >
           <div className="hero-text">
             <motion.p
