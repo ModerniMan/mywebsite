@@ -1,16 +1,18 @@
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
+import crypto from 'crypto';
 import { readContent, writeContent } from '@/lib/data';
 import translations from '@/lib/translations';
 
 const ADMIN_PASS = process.env.ADMIN_PASS;
 const TOKEN = 'moderniman_admin_token';
+const SECRET = process.env.ADMIN_PASS + '_moderniman_secret';
 
 function isAuth() {
   if (!ADMIN_PASS) return false;
   const cookieStore = cookies();
   const token = cookieStore.get(TOKEN);
-  const tokenValue = Buffer.from(ADMIN_PASS).toString('base64');
+  const tokenValue = crypto.createHmac('sha256', SECRET).update(ADMIN_PASS).digest('hex');
   return token?.value === tokenValue;
 }
 

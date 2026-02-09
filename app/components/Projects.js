@@ -4,12 +4,15 @@ import { useLang } from '@/lib/LangContext';
 import { motion } from 'framer-motion';
 import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
 
-const projectIcons = ['🛡️', '🤖', '📊', '📡'];
+const projectIcons = ['🛡️', '🤖', '📊', '📡', '🧠', '📄', '🚨'];
 const projectGradients = [
   'linear-gradient(135deg, #6366f1, #8b5cf6)',
   'linear-gradient(135deg, #3b82f6, #06b6d4)',
   'linear-gradient(135deg, #f59e0b, #ef4444)',
   'linear-gradient(135deg, #eab308, #f97316)',
+  'linear-gradient(135deg, #ef4444, #dc2626)',
+  'linear-gradient(135deg, #06b6d4, #0891b2)',
+  'linear-gradient(135deg, #22c55e, #16a34a)',
 ];
 
 export default function Projects() {
