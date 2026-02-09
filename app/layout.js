@@ -4,6 +4,12 @@ export const metadata = {
   title: 'Lipaz Nussen | Portfolio',
   description: 'Operations, Technology & Management — Portfolio',
   icons: { icon: '/favicon.ico' },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+  },
+  themeColor: '#0a0a0f',
 };
 
 export default function RootLayout({ children }) {
